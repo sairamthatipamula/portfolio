@@ -3,75 +3,445 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Portfolio Projects</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>My Projects</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="animations.css">
+  <style>
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: #34495e;
+    }
+    
+    .page-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .page-title {
+      font-family: 'Merriweather', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: #34495e;
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .page-title::after {
+      content: '';
+      position: absolute;
+      width: 70%;
+      height: 5px;
+      background: linear-gradient(90deg, #34495e, #2c3e50);
+      bottom: -15px;
+      left: 15%;
+      border-radius: 5px;
+    }
+    
+    .page-subtitle {
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: #7f8c8d;
+      max-width: 700px;
+      margin: 30px auto 0;
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    
+    .project-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card-header {
+      background: linear-gradient(135deg, #34495e, #2c3e50);
+      padding: 25px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card-header::before {
+      content: '';
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      top: -75px;
+      right: -75px;
+    }
+    
+    .card-header::after {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      bottom: -50px;
+      left: -50px;
+    }
+    
+    .project-icon {
+      font-size: 2.5rem;
+      color: white;
+      margin-bottom: 15px;
+      display: inline-block;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .project-title {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .card-body {
+      padding: 25px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card-text {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #34495e;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .project-tag {
+      background: rgba(52, 73, 94, 0.1);
+      color: #34495e;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    .project-link {
+      display: inline-block;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #34495e, #2c3e50);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(52, 73, 94, 0.3);
+      margin-top: auto;
+    }
+    
+    .project-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(52, 73, 94, 0.4);
+      text-decoration: none;
+    }
+    
+    /* Custom navigation */
+    .main-nav {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50px;
+      padding: 10px 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+    }
+    
+    .main-nav ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .main-nav ul li {
+      list-style: none;
+    }
+    
+    .main-nav ul li a {
+      padding: 10px 20px;
+      color: #34495e;
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+    
+    .main-nav ul li a:hover, .main-nav ul li a.active {
+      background: linear-gradient(135deg, #34495e, #2c3e50);
+      color: white;
+      box-shadow: 0 4px 10px rgba(52, 73, 94, 0.3);
+    }
+    
+    /* Custom footer */
+    footer {
+      background: linear-gradient(135deg, #34495e, #2c3e50);
+      color: white;
+      padding: 40px 0;
+      margin-top: 100px;
+    }
+    
+    .footer-content {
+      text-align: center;
+    }
+    
+    .footer-text {
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+    
+    /* Animations */
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+    
+    .float-animation {
+      animation: float 4s ease-in-out infinite;
+    }
+  </style>
 </head>
 <body>
   <header>
     <div class="container">
-      <nav>
-          <ul>
-              <li><a href="index.html" class="animate__animated animate__fadeInLeft">About Me</a></li>
-              <li><a href="projects.html" class="animate__animated animate__fadeInLeft">Projects</a></li>
-              <li><a href="certificates.html" class="animate__animated animate__fadeInLeft">Certificates</a></li>
-              <li><a href="skills.html" class="animate__animated animate__fadeInLeft">Technical Skills</a></li>
-              <li><a href="education.html" class="animate__animated animate__fadeInLeft">Education</a></li>
-              <li><a href="training.html" class="animate__animated animate__fadeInLeft">Online Training</a></li>
-              <li><a href="contact.html" class="animate__animated animate__fadeInLeft">Contact</a></li>
-          </ul>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html" class="animate__animated animate__fadeIn">About Me</a></li>
+          <li><a href="projects.html" class="animate__animated animate__fadeIn active">Projects</a></li>
+          <li><a href="certificates.html" class="animate__animated animate__fadeIn">Certificates</a></li>
+          <li><a href="skills.html" class="animate__animated animate__fadeIn">Technical Skills</a></li>
+          <li><a href="education.html" class="animate__animated animate__fadeIn">Education</a></li>
+          <li><a href="training.html" class="animate__animated animate__fadeIn">Online Training</a></li>
+          <li><a href="contact.html" class="animate__animated animate__fadeIn">Contact</a></li>
+        </ul>
       </nav>
-  </div>
+    </div>
   </header>
 
   <section id="projects" class="projects">
     <div class="container">
-      <h2 class="animate__animated animate__fadeIn">Projects</h2>
-      <div class="project-list">
-        <div class="project-item animate__animated animate__fadeInLeft">
-          <h3>Gold Price Prediction</h3>
-          <p>• Developed a machine learning model using Python to accurately predict gold prices, employing techniques such as regression analysis and time series forecasting to
-            analyse historical data and identify trends</p>
-          <p>• Technologies and Libraries Leveraged powerful Python libraries including pandas, scikit-learn, and TensorFlow to preprocess data, train models,
-             and evaluateperformance, ensuring high accuracy and efficiency in predictive analytic</p>
-          <a href="https://colab.research.google.com/drive/1MwHW9FmVph_VVM3HC57SMQi--y2dZ1oi?usp=sharing" class="Colab-link">Google Colab </a>🔗
-        </div>
-        <div class="project-item animate__animated animate__fadeInRight">
-          <h3>DeepLearning Assignments</h3>
-          <p>• The platforms, programming languages, and libraries utilized. For instance: "Utilized Google Colab for cloud-based development, employing Python, TensorFlow, and Keras for deep learning model implementation."</p>
-          <p>• Designed and trained convolutional neural networks (CNNs) for image classification tasks, achieving an accuracy improvement of 15% over baseline models</p>
-          <p>• The model's predictions led to a 10% increase in sales forecasting accuracy, directly contributing to more informed business decisions</p>
-          
-          <a href="https://colab.research.google.com/drive/15XX3_uLrLzXtcraNhwYX1TrhveVqmB8v?usp=sharing" class="Colab-link">Google Colab </a>🔗
+      <div class="page-header animate__animated animate__fadeIn">
+        <h1 class="page-title">My Projects</h1>
+        <p class="page-subtitle">A showcase of my technical projects and development work across various domains.</p>
+      </div>
+      
+      <div class="projects-grid">
+        <!-- Gold Price Prediction -->
+        <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+          <div class="card-header">
+            <i class="fas fa-chart-line project-icon float-animation"></i>
+            <h3 class="project-title">Gold Price Prediction</h3>
           </div>
-        <div class="project-item animate__animated animate__fadeInLeft">
-          <h3>Feature Detection Using Harris and FAST Operators</h3>
-          <p>• Implemented and analyzed Harris and FAST feature detection algorithms for real-time video analysis</p>
-          <p>• Optimized accuracy and computational efficiency for object tracking and image recognition</p>
-          <p>• Compared performance trade-offs between precision and speed in feature detection</p>
-          <p>• Evaluated real-time applicability for motion analysis and scene understanding</p>
-          <a href="https://colab.research.google.com/drive/141_PCIclgUREzEr2rWGQv0E-H-kPXjgI?usp=sharing" class="Colab-link">Google Colab </a>🔗
+          <div class="card-body">
+            <div class="card-text">
+              <p>Developed a machine learning model using Python to accurately predict gold prices, employing techniques such as regression analysis and time series forecasting to analyse historical data and identify trends.</p>
+              <p>Technologies and Libraries: Leveraged powerful Python libraries including pandas, scikit-learn, and TensorFlow to preprocess data, train models, and evaluate performance, ensuring high accuracy and efficiency in predictive analytics.</p>
+            </div>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Machine Learning</span>
+              <span class="project-tag">TensorFlow</span>
+              <span class="project-tag">Data Analysis</span>
+            </div>
+            <a href="https://colab.research.google.com/drive/1MwHW9FmVph_VVM3HC57SMQi--y2dZ1oi?usp=sharing" class="project-link" target="_blank">
+              <i class="fab fa-google"></i> View on Google Colab
+            </a>
           </div>
-        <div class="project-item animate__animated animate__fadeInRight">
-          <h3>Library Management System</h3>
-          <p>Developed a Python-based library management system to simplify cataloging and user management.</p>
         </div>
-        <div class="project-item animate__animated animate__fadeInLeft">
-          <h3>Gold's Gym Website</h3>
-          <p>Designed and developed a frontend website for Gold's Gym using HTML, CSS, and JavaScript.</p>
+        
+        <!-- DeepLearning Assignments -->
+        <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+          <div class="card-header">
+            <i class="fas fa-brain project-icon float-animation"></i>
+            <h3 class="project-title">DeepLearning Assignments</h3>
+          </div>
+          <div class="card-body">
+            <div class="card-text">
+              <p>Utilized Google Colab for cloud-based development, employing Python, TensorFlow, and Keras for deep learning model implementation.</p>
+              <p>Designed and trained convolutional neural networks (CNNs) for image classification tasks, achieving an accuracy improvement of 15% over baseline models.</p>
+              <p>The model's predictions led to a 10% increase in sales forecasting accuracy, directly contributing to more informed business decisions.</p>
+            </div>
+            <div class="project-tags">
+              <span class="project-tag">Deep Learning</span>
+              <span class="project-tag">CNN</span>
+              <span class="project-tag">TensorFlow</span>
+              <span class="project-tag">Keras</span>
+            </div>
+            <a href="https://colab.research.google.com/drive/15XX3_uLrLzXtcraNhwYX1TrhveVqmB8v?usp=sharing" class="project-link" target="_blank">
+              <i class="fab fa-google"></i> View on Google Colab
+            </a>
+          </div>
+        </div>
+        
+        <!-- Feature Detection -->
+        <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+          <div class="card-header">
+            <i class="fas fa-camera project-icon float-animation"></i>
+            <h3 class="project-title">Feature Detection Using Harris and FAST Operators</h3>
+          </div>
+          <div class="card-body">
+            <div class="card-text">
+              <p>Implemented and analyzed Harris and FAST feature detection algorithms for real-time video analysis.</p>
+              <p>Optimized accuracy and computational efficiency for object tracking and image recognition.</p>
+              <p>Compared performance trade-offs between precision and speed in feature detection.</p>
+              <p>Evaluated real-time applicability for motion analysis and scene understanding.</p>
+            </div>
+            <div class="project-tags">
+              <span class="project-tag">Computer Vision</span>
+              <span class="project-tag">OpenCV</span>
+              <span class="project-tag">Image Processing</span>
+              <span class="project-tag">Python</span>
+            </div>
+            <a href="https://colab.research.google.com/drive/141_PCIclgUREzEr2rWGQv0E-H-kPXjgI?usp=sharing" class="project-link" target="_blank">
+              <i class="fab fa-google"></i> View on Google Colab
+            </a>
+          </div>
+        </div>
+        
+        <!-- Library Management System -->
+        <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+          <div class="card-header">
+            <i class="fas fa-book project-icon float-animation"></i>
+            <h3 class="project-title">Library Management System</h3>
+          </div>
+          <div class="card-body">
+            <div class="card-text">
+              <p>Developed a Python-based library management system to simplify cataloging and user management.</p>
+              <p>Implemented features for book tracking, user authentication, and borrowing history.</p>
+              <p>Created an intuitive interface for librarians to manage inventory and track overdue books.</p>
+            </div>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Database</span>
+              <span class="project-tag">UI Design</span>
+              <span class="project-tag">System Design</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Gold's Gym Website -->
+        <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
+          <div class="card-header">
+            <i class="fas fa-dumbbell project-icon float-animation"></i>
+            <h3 class="project-title">Gold's Gym Website</h3>
+          </div>
+          <div class="card-body">
+            <div class="card-text">
+              <p>Designed and developed a frontend website for Gold's Gym using HTML, CSS, and JavaScript.</p>
+              <p>Created responsive layouts that adapt to various screen sizes and devices.</p>
+              <p>Implemented interactive features such as class schedules, membership sign-up, and trainer profiles.</p>
+            </div>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">Responsive Design</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- AI Resume Screening -->
+        <div class="project-card animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
+          <div class="card-header">
+            <i class="fas fa-file-alt project-icon float-animation"></i>
+            <h3 class="project-title">AI Resume Screening</h3>
+          </div>
+          <div class="card-body">
+            <div class="card-text">
+              <p>Developed an intelligent resume screening system that uses natural language processing to analyze and rank job applicants.</p>
+              <p>Implemented machine learning algorithms to match candidate skills with job requirements, reducing manual screening time by 70%.</p>
+              <p>Created a user-friendly dashboard for HR professionals to review candidate rankings and qualification summaries.</p>
+              <p>Integrated with existing applicant tracking systems to streamline the hiring workflow.</p>
+            </div>
+            <div class="project-tags">
+              <span class="project-tag">NLP</span>
+              <span class="project-tag">Machine Learning</span>
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Text Analysis</span>
+              <span class="project-tag">HR Tech</span>
+            </div>
+            <a href="https://colab.research.google.com/drive/1TXFe40QEcWBeNQ-jJzVW4Omd_aE1pzXo?usp=sharing" class="project-link" target="_blank">
+              <i class="fab fa-google"></i> View on Google Colab
+            </a>
+          </div>
         </div>
       </div>
+      
     </div>
   </section>
 
   <footer>
     <div class="container">
-      <p class="animate__animated animate__fadeIn">&copy; 2025 All rights reserved</p>
+      <div class="footer-content">
+        <p class="footer-text">&copy; 2025 All rights reserved</p>
+      </div>
     </div>
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    // Add hover effect to cards
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.querySelector('.project-icon').style.transform = 'scale(1.2)';
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        this.querySelector('.project-icon').style.transform = 'scale(1)';
+      });
+    });
+    
+    // Highlight active nav item
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentPage = window.location.pathname.split('/').pop();
+      document.querySelectorAll('.main-nav a').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
