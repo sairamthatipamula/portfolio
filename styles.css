@@ -1,112 +1,108 @@
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f4f4f4;
-  }
-  
-  .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  h1, h2, h3 {
-    color: #aeb9d8fd; /* Dark blue for headings */
-  }
-  
-  a {
-    text-decoration: none;
-    color: #3498db; /* Light blue for links */
-  }
-  
-  a:hover {
-    text-decoration: underline;
-    color: #2980b9; /* Darker blue on hover */
-  }
-  
-  /* Header */
-  header {
-    background: #34495e; /* Dark blue-gray */
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-  }
-  
-  header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-  }
-  
-  header p {
-    margin: 5px 0 0;
-    font-size: 1.2rem;
-  }
-  
-  header nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0 0;
-  }
-  
-  header nav ul li {
-    display: inline;
-    margin: 0 15px;
-  }
-  
-  header nav ul li a {
-    color: #fff;
-    font-weight: 600;
-  }
-  
-  /* Sections */
-  section {
-    padding: 60px 0;
-  }
-  
-  section h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2.5rem;
-    color: #2c3e50; /* Dark blue for section headings */
-  }
-  
-  .about p {
-    text-align: justify;
-    font-size: 1.1rem;
-    line-height: 1.8;
-  }
-  
-  .project-list, .training-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .project-item, .training-item {
-    background: #fff;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    flex: 1 1 calc(33.333% - 40px);
-    box-sizing: border-box;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .project-item:hover, .training-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  .project-item h3, .training-item h3 {
-    margin-top: 0;
-    color: #3498db; /* Light blue for project titles */
-  }
-  
-  /* Certificates Section */
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  color: #2c3e50;
+  background-color: #f9f9f9;
+  transition: background-color 0.5s ease;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  color: #34495e;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Header */
+header {
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  color: #fff;
+  padding: 25px 0;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+header p {
+  margin: 5px 0 0;
+  font-size: 1.2rem;
+}
+
+header nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+}
+
+header nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+header nav ul li a {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Sections */
+section {
+  padding: 60px 0;
+}
+
+section h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  color: #2c3e50; /* Dark blue for section headings */
+}
+
+.about p {
+  text-align: justify;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.project-list, .training-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.project-item, .training-item {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  flex: 1 1 calc(33.333% - 40px);
+  box-sizing: border-box;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-bottom: 3px solid transparent;
+}
+
+.project-item:hover, .training-item:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-bottom: 3px solid #3498db;
+}
+
+.project-item h3, .training-item h3 {
+  margin-top: 0;
+  color: #3498db; /* Light blue for project titles */
+}
+
+/* Certificates Section */
 .certificate-list {
   display: flex;
   flex-direction: column;
@@ -228,3 +224,36 @@ body {
     margin: 0;
     font-size: 1rem;
   }
+
+.download-container {
+  text-align: center;
+  padding: 40px 0;
+  background: #f4f4f4;
+  margin-top: 40px;
+}
+
+.download-btn {
+  display: inline-block;
+  padding: 15px 40px;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 8px 15px rgba(41, 128, 185, 0.2);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 1px;
+}
+
+.download-btn:hover {
+  background: linear-gradient(135deg, #2980b9, #3498db);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(41, 128, 185, 0.3);
+}
+
+.download-btn:active {
+  transform: translateY(1px);
+}
