@@ -1,54 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thatipamula Sairam - About Me</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="animations.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thatipamula Sairam - About Me</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="animations.css">
+  <style>
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: #34495e;
+    }
+    
+    .page-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .page-title {
+      font-family: 'Merriweather', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: #34495e;
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .page-title::after {
+      content: '';
+      position: absolute;
+      width: 70%;
+      height: 5px;
+      background: linear-gradient(90deg, #34495e, #2c3e50);
+      bottom: -15px;
+      left: 15%;
+      border-radius: 5px;
+    }
+    
+    .page-subtitle {
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: #7f8c8d;
+      max-width: 700px;
+      margin: 30px auto 0;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .about-content {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+    
+    .about-content p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+    
+    .download-container {
+      text-align: center;
+      margin: 40px 0;
+      background: transparent;
+      padding: 20px;
+      border-radius: 15px;
+    }
+    
+    .download-btn {
+      display: inline-block;
+      padding: 15px 30px;
+      background: linear-gradient(135deg, #34495e, #2c3e50);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(52, 73, 94, 0.3);
+      font-size: 1.1rem;
+    }
+    
+    .download-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(52, 73, 94, 0.4);
+    }
+    
+    .download-btn i {
+      margin-right: 10px;
+    }
+    
+    /* Custom navigation */
+    .main-nav {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50px;
+      padding: 10px 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+    }
+    
+    .main-nav ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .main-nav ul li {
+      list-style: none;
+    }
+    
+    .main-nav ul li a {
+      padding: 10px 20px;
+      color: #34495e;
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+    
+    .main-nav ul li a:hover, .main-nav ul li a.active {
+      background: linear-gradient(135deg, #34495e, #2c3e50);
+      color: white;
+      box-shadow: 0 4px 10px rgba(52, 73, 94, 0.3);
+    }
+    
+    /* Custom footer */
+    footer {
+      background: linear-gradient(135deg, #34495e, #2c3e50);
+      color: white;
+      padding: 40px 0;
+      margin-top: 100px;
+    }
+    
+    .footer-content {
+      text-align: center;
+    }
+    
+    .footer-text {
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1 class="animate__animated animate__fadeInDown">Thatipamula Sairam</h1>
-            <h5 class="animate__animated animate__fadeInDown">▾ Hyderabad, Telangana</h5>
-            <p class="animate__animated animate__fadeInUp">Data Scientist | Machine Learning Engineer | Software Developer</p>
-            <nav>
-                <ul>
-                    <li><a href="index.html" class="animate__animated animate__fadeInLeft">About Me</a></li>
-                    <li><a href="projects.html" class="animate__animated animate__fadeInLeft">Projects</a></li>
-                    <li><a href="certificates.html" class="animate__animated animate__fadeInLeft">Certificates</a></li>
-                    <li><a href="skills.html" class="animate__animated animate__fadeInLeft">Technical Skills</a></li>
-                    <li><a href="education.html" class="animate__animated animate__fadeInLeft">Education</a></li>
-                    <li><a href="training.html" class="animate__animated animate__fadeInLeft">Online Training</a></li>
-                    <li><a href="contact.html" class="animate__animated animate__fadeInLeft">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <header>
+    <div class="container">
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html" class="animate__animated animate__fadeIn active">About Me</a></li>
+          <li><a href="projects.html" class="animate__animated animate__fadeIn">Projects</a></li>
+          <li><a href="certificates.html" class="animate__animated animate__fadeIn">Certificates</a></li>
+          <li><a href="skills.html" class="animate__animated animate__fadeIn">Technical Skills</a></li>
+          <li><a href="education.html" class="animate__animated animate__fadeIn">Education</a></li>
+          <li><a href="training.html" class="animate__animated animate__fadeIn">Online Training</a></li>
+          <li><a href="contact.html" class="animate__animated animate__fadeIn">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="animate__animated animate__fadeIn">About Me</h2>
-            <p class="animate__animated animate__fadeIn">
-                I am a passionate and driven Computer Science Engineering student at Lovely Professional University, with a strong foundation in programming, machine learning, and web development. My academic journey has equipped me with a deep understanding of data structures, algorithms, and software development, complemented by hands-on experience in building real-world projects.
-            </p>
-            <p class="animate__animated animate__fadeIn">
-                I thrive on solving complex problems and enjoy working on innovative solutions that leverage cutting-edge technologies. My expertise lies in Python programming, machine learning, and Frontend development, with a keen interest in exploring the realms of artificial intelligence and data science.
-            </p>
-            <p class="animate__animated animate__fadeIn">
-                Beyond technical skills, I am a creative thinker with a strong attention to detail, ensuring that every project I undertake is not only functional but also aesthetically pleasing. I am constantly seeking opportunities to grow, learn, and contribute to impactful projects that make a difference.
-            </p>
-        </div>
-    </section>
+  <section id="about" class="about">
+    <div class="container">
+      <div class="page-header animate__animated animate__fadeIn">
+        <h1 class="page-title">Thatipamula Sairam</h1>
+        <p class="page-subtitle">Machine Learning Engineer | Software Developer | IOS Developer</p>
+        <p class="page-subtitle"><i class="fas fa-map-marker-alt"></i> Hyderabad, Telangana</p>
+      </div>
+      
+      <div class="about-content animate__animated animate__fadeIn">
+        <p>
+          I am a passionate and driven Computer Science Engineering student at Lovely Professional University, with a strong foundation in programming, machine learning, and web development. My academic journey has equipped me with a deep understanding of data structures, algorithms, and software development, complemented by hands-on experience in building real-world projects.
+        </p>
+        <p>
+          I thrive on solving complex problems and enjoy working on innovative solutions that leverage cutting-edge technologies. My expertise lies in Python programming, machine learning, and Frontend development, with a keen interest in exploring the realms of artificial intelligence and data science.
+        </p>
+        <p>
+          Beyond technical skills, I am a creative thinker with a strong attention to detail, ensuring that every project I undertake is not only functional but also aesthetically pleasing. I am constantly seeking opportunities to grow, learn, and contribute to impactful projects that make a difference.
+        </p>
+      </div>
+      
+      <div class="download-container">
+        <a href="/Users/sairamgupta/Downloads/Files" download="SplCV🔗.pdf" class="download-btn animate__animated animate__pulse">
+          <i class="fas fa-download"></i> Download CV
+        </a>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <div class="container">
-            <p class="animate__animated animate__fadeIn">&copy; 2025 All rights reserved</p>
-        </div>
-    </footer>
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <p class="footer-text">&copy; 2025 All rights reserved</p>
+      </div>
+    </div>
+  </footer>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
+  <script>
+    // Highlight active nav item
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentPage = window.location.pathname.split('/').pop();
+      document.querySelectorAll('.main-nav a').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
