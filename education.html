@@ -3,53 +3,335 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Portfolio Education</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>Educational Background</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="animations.css">
+  <style>
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: #34495e;
+    }
+    
+    .page-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .page-title {
+      font-family: 'Merriweather', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: #34495e;
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .page-title::after {
+      content: '';
+      position: absolute;
+      width: 70%;
+      height: 5px;
+      background: linear-gradient(90deg, #34495e, #2c3e50);
+      bottom: -15px;
+      left: 15%;
+      border-radius: 5px;
+    }
+    
+    .page-subtitle {
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: #7f8c8d;
+      max-width: 700px;
+      margin: 30px auto 0;
+    }
+    
+    .education-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-top: 50px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .education-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .education-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card-header {
+      background: linear-gradient(135deg, #34495e, #2c3e50);
+      padding: 25px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card-header::before {
+      content: '';
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      top: -75px;
+      right: -75px;
+    }
+    
+    .card-header::after {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      bottom: -50px;
+      left: -50px;
+    }
+    
+    .card-icon {
+      font-size: 2.5rem;
+      color: white;
+      margin-bottom: 15px;
+      display: inline-block;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .card-title {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .card-body {
+      padding: 25px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card-text {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #34495e;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    
+    .education-details {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+    
+    .education-detail {
+      background: rgba(52, 73, 94, 0.1);
+      color: #34495e;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin: 5px;
+    }
+    
+    /* Custom navigation */
+    .main-nav {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50px;
+      padding: 10px 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+    }
+    
+    .main-nav ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .main-nav ul li {
+      list-style: none;
+    }
+    
+    .main-nav ul li a {
+      padding: 10px 20px;
+      color: #34495e;
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+    
+    .main-nav ul li a:hover, .main-nav ul li a.active {
+      background: linear-gradient(135deg, #34495e, #2c3e50);
+      color: white;
+      box-shadow: 0 4px 10px rgba(52, 73, 94, 0.3);
+    }
+    
+    /* Custom footer */
+    footer {
+      background: linear-gradient(135deg, #34495e, #2c3e50);
+      color: white;
+      padding: 40px 0;
+      margin-top: 100px;
+    }
+    
+    .footer-content {
+      text-align: center;
+    }
+    
+    .footer-text {
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+    
+    /* Animations */
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+    
+    .float-animation {
+      animation: float 4s ease-in-out infinite;
+    }
+  </style>
 </head>
 <body>
   <header>
     <div class="container">
-      <nav>
-          <ul>
-              <li><a href="index.html" class="animate__animated animate__fadeInLeft">About Me</a></li>
-              <li><a href="projects.html" class="animate__animated animate__fadeInLeft">Projects</a></li>
-              <li><a href="certificates.html" class="animate__animated animate__fadeInLeft">Certificates</a></li>
-              <li><a href="skills.html" class="animate__animated animate__fadeInLeft">Technical Skills</a></li>
-              <li><a href="education.html" class="animate__animated animate__fadeInLeft">Education</a></li>
-              <li><a href="training.html" class="animate__animated animate__fadeInLeft">Online Training</a></li>
-              <li><a href="contact.html" class="animate__animated animate__fadeInLeft">Contact</a></li>
-          </ul>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html" class="animate__animated animate__fadeIn">About Me</a></li>
+          <li><a href="projects.html" class="animate__animated animate__fadeIn">Projects</a></li>
+          <li><a href="certificates.html" class="animate__animated animate__fadeIn">Certificates</a></li>
+          <li><a href="skills.html" class="animate__animated animate__fadeIn">Technical Skills</a></li>
+          <li><a href="education.html" class="animate__animated animate__fadeIn active">Education</a></li>
+          <li><a href="training.html" class="animate__animated animate__fadeIn">Online Training</a></li>
+          <li><a href="contact.html" class="animate__animated animate__fadeIn">Contact</a></li>
+        </ul>
       </nav>
-  </div>
+    </div>
   </header>
 
   <section id="education" class="education">
     <div class="container">
-      <h2 class="animate__animated animate__fadeIn">Education</h2>
-      <div class="education-item animate__animated animate__fadeInLeft">
-        <h3>Lovely Professional University, Punjab</h3>
-        <p>Bachelor of Technology in Computer Science and Engineering | CGPA: 6.6 | 2021 – 2025</p>
+      <div class="page-header animate__animated animate__fadeIn">
+        <h1 class="page-title">Educational Journey</h1>
+        <p class="page-subtitle">My academic background and qualifications that have shaped my knowledge and expertise.</p>
       </div>
-      <div class="education-item animate__animated animate__fadeInRight">
-        <h3>SR Jr. College, Nizamabad</h3>
-        <p>12th Standard | Percentage: 72% | 2019 – 2021</p>
-      </div>
-      <div class="education-item animate__animated animate__fadeInLeft">
-        <h3>Narayana Schools, Hyderabad</h3>
-        <p>10th Standard | CGPA: 9.3 | 2018 – 2019</p>
+      
+      <div class="education-grid">
+        <!-- University Education -->
+        <div class="education-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+          <div class="card-header">
+            <i class="fas fa-university card-icon float-animation"></i>
+            <h3 class="card-title">Lovely Professional University, Punjab</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Pursuing a Bachelor of Technology in Computer Science and Engineering with a focus on modern software development practices and emerging technologies.</p>
+            <div class="education-details">
+              <span class="education-detail"><i class="fas fa-graduation-cap"></i> B.Tech in CSE</span>
+              <span class="education-detail"><i class="fas fa-star"></i> CGPA: 6.6</span>
+              <span class="education-detail"><i class="far fa-calendar-alt"></i> 2021 – 2025</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Junior College -->
+        <div class="education-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+          <div class="card-header">
+            <i class="fas fa-school card-icon float-animation"></i>
+            <h3 class="card-title">SR Jr. College, Nizamabad</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Completed higher secondary education with a focus on Mathematics, Physics, and Chemistry, building a strong foundation in analytical thinking and problem-solving.</p>
+            <div class="education-details">
+              <span class="education-detail"><i class="fas fa-book"></i> 12th Standard</span>
+              <span class="education-detail"><i class="fas fa-percentage"></i> Percentage: 72%</span>
+              <span class="education-detail"><i class="far fa-calendar-alt"></i> 2019 – 2021</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- School -->
+        <div class="education-card animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+          <div class="card-header">
+            <i class="fas fa-graduation-cap card-icon float-animation"></i>
+            <h3 class="card-title">Narayana School, Hyderabad</h3>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Completed secondary education with excellence, developing a strong academic foundation and cultivating an interest in science and technology.</p>
+            <div class="education-details">
+              <span class="education-detail"><i class="fas fa-book"></i> 10th Standard</span>
+              <span class="education-detail"><i class="fas fa-star"></i> CGPA: 9.3</span>
+              <span class="education-detail"><i class="far fa-calendar-alt"></i> 2018 – 2019</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <footer>
     <div class="container">
-      <p class="animate__animated animate__fadeIn">&copy; 2025 All rights reserved</p>
+      <div class="footer-content">
+        <p class="footer-text">&copy; 2025 All rights reserved</p>
+      </div>
     </div>
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    // Add hover effect to cards
+    document.querySelectorAll('.education-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.querySelector('.card-icon').style.transform = 'scale(1.2)';
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        this.querySelector('.card-icon').style.transform = 'scale(1)';
+      });
+    });
+    
+    // Highlight active nav item
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentPage = window.location.pathname.split('/').pop();
+      document.querySelectorAll('.main-nav a').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
