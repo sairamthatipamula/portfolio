@@ -3,47 +3,379 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Portfolio Technical Skills</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>Professional Skills & Expertise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="animations.css">
+  <style>
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: #34495e;
+    }
+    
+    .page-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .page-title {
+      font-family: 'Merriweather', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: #34495e;
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .page-title::after {
+      content: '';
+      position: absolute;
+      width: 70%;
+      height: 5px;
+      background: linear-gradient(90deg, #34495e, #2c3e50);
+      bottom: -15px;
+      left: 15%;
+      border-radius: 5px;
+    }
+    
+    .page-subtitle {
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: #7f8c8d;
+      max-width: 700px;
+      margin: 30px auto 0;
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-top: 50px;
+    }
+    
+    .skill-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      z-index: 1;
+      height: 100%;
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+    
+    .skill-header {
+      background: linear-gradient(135deg, #34495e, #2c3e50);
+      padding: 25px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .skill-header::before {
+      content: '';
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      top: -75px;
+      right: -75px;
+    }
+    
+    .skill-icon {
+      font-size: 2.5rem;
+      color: white;
+      margin-bottom: 15px;
+      display: inline-block;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .skill-title {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .skill-body {
+      padding: 25px;
+    }
+    
+    .skill-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .skill-list li {
+      margin-bottom: 15px;
+      padding-left: 30px;
+      position: relative;
+    }
+    
+    .skill-list li::before {
+      content: '';
+      color: #34495e;
+      font-size: 1.5rem;
+      position: absolute;
+      left: 0;
+      top: -5px;
+    }
+    
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    
+    .skill-tag {
+      background: rgba(52, 73, 94, 0.1);
+      color: #34495e;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .skill-tag:hover {
+      background: linear-gradient(135deg, #34495e, #2c3e50);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(52, 73, 94, 0.3);
+    }
+    
+    /* Custom navigation */
+    .main-nav {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50px;
+      padding: 10px 20px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+    }
+    
+    .main-nav ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .main-nav ul li {
+      list-style: none;
+    }
+    
+    .main-nav ul li a {
+      padding: 10px 20px;
+      color: #34495e;
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+    
+    .main-nav ul li a:hover, .main-nav ul li a.active {
+      background: linear-gradient(135deg, #34495e, #2c3e50);
+      color: white;
+      box-shadow: 0 4px 10px rgba(52, 73, 94, 0.3);
+    }
+    
+    /* Custom footer */
+    footer {
+      background: linear-gradient(135deg, #34495e, #2c3e50);
+      color: white;
+      padding: 40px 0;
+      margin-top: 100px;
+    }
+    
+    .footer-content {
+      text-align: center;
+    }
+    
+    .footer-text {
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+    
+    /* Animations */
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+    
+    .float-animation {
+      animation: float 4s ease-in-out infinite;
+    }
+  </style>
 </head>
 <body>
   <header>
     <div class="container">
-      <nav>
-          <ul>
-              <li><a href="index.html" class="animate__animated animate__fadeInLeft">About Me</a></li>
-              <li><a href="projects.html" class="animate__animated animate__fadeInLeft">Projects</a></li>
-              <li><a href="certificates.html" class="animate__animated animate__fadeInLeft">Certificates</a></li>
-              <li><a href="skills.html" class="animate__animated animate__fadeInLeft">Technical Skills</a></li>
-              <li><a href="education.html" class="animate__animated animate__fadeInLeft">Education</a></li>
-              <li><a href="training.html" class="animate__animated animate__fadeInLeft">Online Training</a></li>
-              <li><a href="contact.html" class="animate__animated animate__fadeInLeft">Contact</a></li>
-          </ul>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html" class="animate__animated animate__fadeIn">About Me</a></li>
+          <li><a href="projects.html" class="animate__animated animate__fadeIn">Projects</a></li>
+          <li><a href="certificates.html" class="animate__animated animate__fadeIn">Certificates</a></li>
+          <li><a href="skills.html" class="animate__animated animate__fadeIn active">Technical Skills</a></li>
+          <li><a href="education.html" class="animate__animated animate__fadeIn">Education</a></li>
+          <li><a href="training.html" class="animate__animated animate__fadeIn">Online Training</a></li>
+          <li><a href="contact.html" class="animate__animated animate__fadeIn">Contact</a></li>
+        </ul>
       </nav>
-  </div>
+    </div>
   </header>
 
   <section id="skills" class="skills">
     <div class="container">
-      <h2 class="animate__animated animate__fadeIn">Technical Skills</h2>
-      <ul class="animate__animated animate__fadeIn">
-        <li><strong>Programming Languages:</strong> Python, Java</li>
-        <li><strong>Technologies/Frameworks:</strong> HTML, CSS, JavaScript, WordPress, SQL</li>
-        <li><strong>Major:</strong> Machine Learning, NLP(Natural language processing), DeepLearning </li>
-        <li><strong>Soft Skills:</strong> Communication, Teamwork, Problem-solving, Critical thinking and Adaptability </li>
-      </ul>
+      <div class="page-header animate__animated animate__fadeIn">
+        <h1 class="page-title">Technical Skills</h1>
+        <p class="page-subtitle">A comprehensive overview of my technical expertise and professional capabilities.</p>
+      </div>
+      
+      <div class="skills-grid">
+        <!-- Programming Languages -->
+        <div class="skill-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+          <div class="skill-header">
+            <i class="fas fa-code skill-icon float-animation"></i>
+            <h3 class="skill-title">Programming Languages</h3>
+          </div>
+          <div class="skill-body">
+            <ul class="skill-list">
+              <li>Python - Data analysis, machine learning, and automation</li>
+              <li>Java - Enterprise applications and Android development</li>
+              <li>Swift - iOS application development and Apple ecosystem</li>
+            </ul>
+            <div class="skill-tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">Swift</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Technologies & Frameworks -->
+        <div class="skill-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+          <div class="skill-header">
+            <i class="fas fa-laptop-code skill-icon float-animation"></i>
+            <h3 class="skill-title">Technologies & Frameworks</h3>
+          </div>
+          <div class="skill-body">
+            <ul class="skill-list">
+              <li>HTML/CSS - Responsive web design and modern layouts</li>
+              <li>JavaScript - Interactive web applications and DOM manipulation</li>
+              <li>WordPress - Content management and website development</li>
+              <li>SQL - Database design and complex queries</li>
+              <li>iOS Development - UIKit, SwiftUI, and mobile app architecture</li>
+            </ul>
+            <div class="skill-tags">
+              <span class="skill-tag">HTML</span>
+              <span class="skill-tag">CSS</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">WordPress</span>
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">iOS</span>
+              <span class="skill-tag">SwiftUI</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Major Expertise -->
+        <div class="skill-card animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+          <div class="skill-header">
+            <i class="fas fa-brain skill-icon float-animation"></i>
+            <h3 class="skill-title">Major Expertise</h3>
+          </div>
+          <div class="skill-body">
+            <ul class="skill-list">
+              <li>Machine Learning - Supervised and unsupervised learning algorithms</li>
+              <li>NLP - Text processing, sentiment analysis, and language models</li>
+              <li>Deep Learning - Neural networks and computer vision applications</li>
+            </ul>
+            <div class="skill-tags">
+              <span class="skill-tag">Machine Learning</span>
+              <span class="skill-tag">NLP</span>
+              <span class="skill-tag">Deep Learning</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Soft Skills -->
+        <div class="skill-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+          <div class="skill-header">
+            <i class="fas fa-users skill-icon float-animation"></i>
+            <h3 class="skill-title">Soft Skills</h3>
+          </div>
+          <div class="skill-body">
+            <ul class="skill-list">
+              <li>Communication - Clear and effective verbal and written communication</li>
+              <li>Teamwork - Collaborative problem-solving and project execution</li>
+              <li>Problem-solving - Analytical thinking and creative solutions</li>
+              <li>Leadership - Team guidance and project management</li>
+              <li>Adaptability - Quick learning and flexibility in changing environments</li>
+            </ul>
+            <div class="skill-tags">
+              <span class="skill-tag">Communication</span>
+              <span class="skill-tag">Teamwork</span>
+              <span class="skill-tag">Problem-solving</span>
+              <span class="skill-tag">Leadership</span>
+              <span class="skill-tag">Adaptability</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <footer>
     <div class="container">
-      <p class="animate__animated animate__fadeIn">&copy; 2025 All rights reserved</p>
+      <div class="footer-content">
+        <p class="footer-text">&copy; 2025 All rights reserved</p>
+      </div>
     </div>
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    // Add hover effect to cards
+    document.querySelectorAll('.skill-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.querySelector('.skill-icon').style.transform = 'scale(1.2)';
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        this.querySelector('.skill-icon').style.transform = 'scale(1)';
+      });
+    });
+    
+    // Highlight active nav item
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentPage = window.location.pathname.split('/').pop();
+      document.querySelectorAll('.main-nav a').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
