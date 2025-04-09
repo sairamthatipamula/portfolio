@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thatipamula Sairam - Projects</title>
-  <!-- Add new font and animation libraries -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Abril+Fatface&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>My Projects | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* Theme color variables */
     :root {
@@ -90,6 +89,7 @@
       gap: 5px;
       padding: 0;
       margin: 0;
+      list-style: none;
     }
     
     .main-nav ul li {
@@ -214,13 +214,21 @@
       overflow: hidden;
       box-shadow: 0 15px 30px var(--shadow-color),
                   0 0 0 1px rgba(255, 255, 255, 0.3) inset;
-      transition: var(--transition-smooth);
+      transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
       transform: translateY(0);
       position: relative;
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.2);
       transform-style: preserve-3d;
       perspective: 1000px;
+      opacity: 0;
+      animation: fadeIn 0.8s forwards;
+      animation-delay: calc(var(--delay) * 100ms);
+    }
+    
+    .project-card.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     
     .project-card:hover {
@@ -238,12 +246,15 @@
       display: flex;
       align-items: center;
       gap: 15px;
+      transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+      transform-style: preserve-3d;
     }
     
     .project-icon {
       font-size: 2.5rem;
       opacity: 0.9;
       transform-style: preserve-3d;
+      transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
     
     .project-title {
@@ -292,35 +303,55 @@
       box-shadow: 0 5px 15px var(--shadow-color);
     }
     
-    .project-link {
+    /* Project button styling */
+    .project-button {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
-      color: var(--primary-color);
-      text-decoration: none;
+      background: var(--primary-gradient);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
       font-weight: 600;
-      transition: var(--transition-smooth);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 5px 15px var(--shadow-color);
+      text-decoration: none;
+      margin-top: 10px;
       position: relative;
-      padding: 5px 0;
+      overflow: hidden;
     }
     
-    .project-link::after {
+    .project-button:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 30px var(--shadow-color);
+      color: white;
+    }
+    
+    .project-button:hover i {
+      animation: bounce 0.8s ease infinite;
+    }
+    
+    .project-button::after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--primary-gradient);
-      transition: var(--transition-smooth);
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.1);
+      transform: rotate(45deg);
+      transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      opacity: 0;
     }
     
-    .project-link:hover {
-      color: var(--accent-color);
+    .project-button:hover::after {
+      opacity: 1;
+      transform: rotate(45deg) translateX(100%);
     }
     
-    .project-link:hover::after {
-      width: 100%;
+    .project-button i {
+      font-size: 1.2rem;
     }
     
     /* Modern footer styles */
@@ -376,38 +407,7 @@
       opacity: 0.8;
       letter-spacing: 1px;
     }
-        /* Project button styling */
-    .project-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: var(--primary-gradient);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 30px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px var(--shadow-color);
-      text-decoration: none;
-      margin-top: 10px;
-    }
     
-    .project-button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px var(--shadow-color);
-      color: white;
-    }
-    
-    .project-button:hover::after {
-      width: 0;
-    }
-    
-    .project-button i {
-      font-size: 1.2rem;
-    }
-    
-    /* Responsive styles */
     /* Enhanced theme switcher */
     .theme-panel {
       position: fixed;
@@ -538,7 +538,7 @@
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     }
     
-    /* New theme colors */
+    /* Theme colors */
     .theme-indigo {
       background: linear-gradient(135deg, #6366f1, #4f46e5);
     }
@@ -571,15 +571,15 @@
       background: linear-gradient(135deg, #1e293b, #0f172a);
     }
     
-    /* Advanced animations */
-    @keyframes fadeInUp {
+    /* Animations */
+    @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(30px) scale(0.95);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
       }
     }
     
@@ -588,49 +588,25 @@
         transform: translateY(0px) rotate(0deg);
       }
       50% {
-        transform: translateY(-10px) rotate(1deg);
+        transform: translateY(-10px) rotate(3deg);
       }
       100% {
         transform: translateY(0px) rotate(0deg);
       }
     }
     
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-        opacity: 1;
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateX(0);
       }
       50% {
-        transform: scale(1.2);
-        opacity: 0.8;
-      }
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-    
-    @keyframes shimmer {
-      0% {
-        background-position: -100% 0;
-      }
-      100% {
-        background-position: 200% 0;
+        transform: translateX(3px);
       }
     }
     
     .float-animation {
-      animation: float 5s ease-in-out infinite;
+      animation: float 6s ease-in-out infinite;
       transform-style: preserve-3d;
-    }
-    
-    .shimmer-effect {
-      background: linear-gradient(90deg, 
-        rgba(255,255,255,0) 0%, 
-        rgba(255,255,255,0.2) 50%, 
-        rgba(255,255,255,0) 100%);
-      background-size: 200% 100%;
-      animation: shimmer 3s infinite;
     }
     
     /* Dark theme specific styles */
@@ -641,7 +617,7 @@
       --shadow-color: rgba(0, 0, 0, 0.3);
     }
     
-    /* Make name visible in dark theme */
+    /* Make title visible in dark theme */
     body.dark-theme .page-title {
       color: #ffffff;
       text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(99, 102, 241, 0.2);
@@ -699,13 +675,13 @@
     <div class="container">
       <nav class="main-nav">
         <ul>
-          <li><a href="index.html" data-aos="fade-down" data-aos-delay="100"><i class="fas fa-user-circle"></i> About Me</a></li>
-          <li><a href="projects.html" class="active" data-aos="fade-down" data-aos-delay="200"><i class="fas fa-laptop-code"></i> Projects</a></li>
-          <li><a href="certificates.html" data-aos="fade-down" data-aos-delay="300"><i class="fas fa-award"></i> Certificates</a></li>
-          <li><a href="skills.html" data-aos="fade-down" data-aos-delay="400"><i class="fas fa-brain"></i> Technical Skills</a></li>
-          <li><a href="education.html" data-aos="fade-down" data-aos-delay="500"><i class="fas fa-graduation-cap"></i> Education</a></li>
-          <li><a href="training.html" data-aos="fade-down" data-aos-delay="600"><i class="fas fa-chalkboard-teacher"></i> Online Training</a></li>
-          <li><a href="contact.html" data-aos="fade-down" data-aos-delay="700"><i class="fas fa-paper-plane"></i> Contact</a></li>
+          <li><a href="index.html"><i class="fas fa-user-circle"></i> About Me</a></li>
+          <li><a href="projects.html" class="active"><i class="fas fa-laptop-code"></i> Projects</a></li>
+          <li><a href="certificates.html"><i class="fas fa-award"></i> Certificates</a></li>
+          <li><a href="skills.html"><i class="fas fa-brain"></i> Technical Skills</a></li>
+          <li><a href="education.html"><i class="fas fa-graduation-cap"></i> Education</a></li>
+          <li><a href="training.html"><i class="fas fa-chalkboard-teacher"></i> Online Training</a></li>
+          <li><a href="contact.html"><i class="fas fa-paper-plane"></i> Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -715,12 +691,12 @@
     <div class="container">
       <div class="page-header" data-aos="fade-up">
         <h1 class="page-title float-animation">My Projects</h1>
-        <p class="page-subtitle" data-aos="fade-up" data-aos-delay="200">A showcase of my technical projects and development work across various domains.</p>
+        <p class="page-subtitle">A showcase of my technical projects and development work across various domains.</p>
       </div>
       
       <div class="projects-grid">
         <!-- Gold Price Prediction -->
-        <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="project-card" style="--delay: 1">
           <div class="card-header">
             <i class="fas fa-chart-line project-icon float-animation"></i>
             <h3 class="project-title">Gold Price Prediction</h3>
@@ -736,14 +712,14 @@
               <span class="project-tag">TensorFlow</span>
               <span class="project-tag">Data Analysis</span>
             </div>
-            <a href="https://colab.research.google.com/drive/1MwHW9FmVph_VVM3HC57SMQi--y2dZ1oi?usp=sharing" class="project-link project-button" target="_blank">
+            <a href="https://colab.research.google.com/drive/1MwHW9FmVph_VVM3HC57SMQi--y2dZ1oi?usp=sharing" class="project-button" target="_blank">
               <i class="fab fa-google"></i> View on Google Colab
             </a>
           </div>
         </div>
          
         <!-- DeepLearning Assignments -->
-        <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="project-card" style="--delay: 1.5">
           <div class="card-header">
             <i class="fas fa-brain project-icon float-animation"></i>
             <h3 class="project-title">DeepLearning Assignments</h3>
@@ -760,14 +736,14 @@
               <span class="project-tag">TensorFlow</span>
               <span class="project-tag">Keras</span>
             </div>
-            <a href="https://colab.research.google.com/drive/15XX3_uLrLzXtcraNhwYX1TrhveVqmB8v?usp=sharing" class="project-link project-button" target="_blank">
+            <a href="https://colab.research.google.com/drive/15XX3_uLrLzXtcraNhwYX1TrhveVqmB8v?usp=sharing" class="project-button" target="_blank">
               <i class="fab fa-google"></i> View on Google Colab
             </a>
           </div>
         </div>
         
         <!-- Feature Detection -->
-        <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="project-card" style="--delay: 2">
           <div class="card-header">
             <i class="fas fa-camera project-icon float-animation"></i>
             <h3 class="project-title">Feature Detection Using Harris and FAST Operators</h3>
@@ -785,14 +761,14 @@
               <span class="project-tag">Image Processing</span>
               <span class="project-tag">Python</span>
             </div>
-            <a href="https://colab.research.google.com/drive/141_PCIclgUREzEr2rWGQv0E-H-kPXjgI?usp=sharing" class="project-link project-button" target="_blank">
+            <a href="https://colab.research.google.com/drive/141_PCIclgUREzEr2rWGQv0E-H-kPXjgI?usp=sharing" class="project-button" target="_blank">
               <i class="fab fa-google"></i> View on Google Colab
             </a>
           </div>
         </div>
         
         <!-- Library Management System -->
-        <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="project-card" style="--delay: 2.5">
           <div class="card-header">
             <i class="fas fa-book project-icon float-animation"></i>
             <h3 class="project-title">Library Management System</h3>
@@ -811,301 +787,321 @@
             </div>
           </div>
         </div>
+                <!-- Rapid Colorimetric and AI-Based Methods -->
+                <div class="project-card" style="--delay: 3">
+                  <div class="card-header">
+                    <i class="fas fa-flask project-icon float-animation"></i>
+                    <h3 class="project-title">Rapid Colorimetric and AI-Based Methods for Determining Microbial Quality of Milk Products</h3>
+                  </div>
+                  <div class="card-body">
+                    <div class="card-text">
+                      <p>Developed an AI-driven system for assessing microbial quality in milk products using rapid colorimetric analysis and machine learning models.</p>
+                      <p>Implemented deep learning techniques to classify contamination levels with high accuracy, enabling real-time detection.</p>
+                      <p>Contributed to end-to-end pipeline including data collection, model training, UI integration, and result validation for quality assurance.</p>
+                    </div>
+                    <div class="project-tags">
+                      <span class="project-tag">AI</span>
+                      <span class="project-tag">Machine Learning</span>
+                      <span class="project-tag">Deep Learning</span>
+                      <span class="project-tag">Python</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- AI Resume Screening -->
+                <div class="project-card" style="--delay: 3.5">
+                  <div class="card-header">
+                    <i class="fas fa-file-alt project-icon float-animation"></i>
+                    <h3 class="project-title">AI Resume Screening</h3>
+                  </div>
+                  <div class="card-body">
+                    <div class="card-text">
+                      <p>Developed an intelligent resume screening system that uses natural language processing to analyze and rank job applicants.</p>
+                      <p>Implemented machine learning algorithms to match candidate skills with job requirements, reducing manual screening time by 70%.</p>
+                      <p>Created a user-friendly dashboard for HR professionals to review candidate rankings and qualification summaries.</p>
+                      <p>Integrated with existing applicant tracking systems to streamline the hiring workflow.</p>
+                    </div>
+                    <div class="project-tags">
+                      <span class="project-tag">NLP</span>
+                      <span class="project-tag">Machine Learning</span>
+                      <span class="project-tag">Python</span>
+                      <span class="project-tag">Text Analysis</span>
+                      <span class="project-tag">HR Tech</span>
+                    </div>
+                    <a href="https://colab.research.google.com/drive/1TXFe40QEcWBeNQ-jJzVW4Omd_aE1pzXo?usp=sharing" class="project-button" target="_blank">
+                      <i class="fab fa-google"></i> View on Google Colab
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         
-        <!-- Rapid Colorimetric and AI-Based Methods -->
-        <div class="project-card" data-aos="fade-up" data-aos-delay="500">
-          <div class="card-header">
-            <i class="fas fa-flask project-icon float-animation"></i>
-            <h3 class="project-title">Rapid Colorimetric and AI-Based Methods for Determining Microbial Quality of Milk Products</h3>
-          </div>
-          <div class="card-body">
-            <div class="card-text">
-              <p>Developed an AI-driven system for assessing microbial quality in milk products using rapid colorimetric analysis and machine learning models.</p>
-              <p>Implemented deep learning techniques to classify contamination levels with high accuracy, enabling real-time detection.</p>
-              <p>Contributed to end-to-end pipeline including data collection, model training, UI integration, and result validation for quality assurance.</p>
+          <footer>
+            <div class="container">
+              <div class="footer-content">
+                <p class="footer-text">&copy; 2025 All rights reserved</p>
+              </div>
             </div>
-            <div class="project-tags">
-              <span class="project-tag">AI</span>
-              <span class="project-tag">Machine Learning</span>
-              <span class="project-tag">Deep Learning</span>
-              <span class="project-tag">Python</span>
-            </div>
-          </div>
-        </div>
+          </footer>
         
-        <!-- AI Resume Screening -->
-        <div class="project-card" data-aos="fade-up" data-aos-delay="600">
-          <div class="card-header">
-            <i class="fas fa-file-alt project-icon float-animation"></i>
-            <h3 class="project-title">AI Resume Screening</h3>
-          </div>
-          <div class="card-body">
-            <div class="card-text">
-              <p>Developed an intelligent resume screening system that uses natural language processing to analyze and rank job applicants.</p>
-              <p>Implemented machine learning algorithms to match candidate skills with job requirements, reducing manual screening time by 70%.</p>
-              <p>Created a user-friendly dashboard for HR professionals to review candidate rankings and qualification summaries.</p>
-              <p>Integrated with existing applicant tracking systems to streamline the hiring workflow.</p>
-            </div>
-            <div class="project-tags">
-              <span class="project-tag">NLP</span>
-              <span class="project-tag">Machine Learning</span>
-              <span class="project-tag">Python</span>
-              <span class="project-tag">Text Analysis</span>
-              <span class="project-tag">HR Tech</span>
-            </div>
-            <a href="https://colab.research.google.com/drive/1TXFe40QEcWBeNQ-jJzVW4Omd_aE1pzXo?usp=sharing" class="project-link project-button" target="_blank">
-              <i class="fab fa-google"></i> View on Google Colab
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <p class="footer-text">&copy; 2025 All rights reserved</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Initialize AOS animations
-      AOS.init({
-        duration: 800,
-        easing: 'ease-out',
-        once: false
-      });
-      
-      // Initialize particles.js
-      particlesJS('particles-js', {
-        "particles": {
-          "number": {
-            "value": 80,
-            "density": {
-              "enable": true,
-              "value_area": 800
-            }
-          },
-          "color": {
-            "value": "#6366f1"
-          },
-          "shape": {
-            "type": "circle",
-            "stroke": {
-              "width": 0,
-              "color": "#000000"
-            },
-            "polygon": {
-              "nb_sides": 5
-            }
-          },
-          "opacity": {
-            "value": 0.5,
-            "random": false,
-            "anim": {
-              "enable": false,
-              "speed": 1,
-              "opacity_min": 0.1,
-              "sync": false
-            }
-          },
-          "size": {
-            "value": 3,
-            "random": true,
-            "anim": {
-              "enable": false,
-              "speed": 40,
-              "size_min": 0.1,
-              "sync": false
-            }
-          },
-          "line_linked": {
-            "enable": true,
-            "distance": 150,
-            "color": "#6366f1",
-            "opacity": 0.4,
-            "width": 1
-          },
-          "move": {
-            "enable": true,
-            "speed": 6,
-            "direction": "none",
-            "random": false,
-            "straight": false,
-            "out_mode": "out",
-            "bounce": false,
-            "attract": {
-              "enable": false,
-              "rotateX": 600,
-              "rotateY": 1200
-            }
-          }
-        },
-        "interactivity": {
-          "detect_on": "canvas",
-          "events": {
-            "onhover": {
-              "enable": true,
-              "mode": "repulse"
-            },
-            "onclick": {
-              "enable": true,
-              "mode": "push"
-            },
-            "resize": true
-          },
-          "modes": {
-            "grab": {
-              "distance": 400,
-              "line_linked": {
-                "opacity": 1
+          <!-- Scripts -->
+          <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+          <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              // Initialize AOS with better settings
+              AOS.init({
+                duration: 1000,
+                easing: 'ease-out-cubic',
+                once: false,
+                mirror: true,
+                anchorPlacement: 'top-bottom'
+              });
+              
+              // Enhanced card animations
+              document.querySelectorAll('.project-card').forEach((card, index) => {
+                // Add staggered entrance animations
+                setTimeout(() => {
+                  card.classList.add('visible');
+                }, 100 * index);
+                
+                // Add hover animations
+                card.addEventListener('mouseenter', function() {
+                  const icon = this.querySelector('.project-icon');
+                  const header = this.querySelector('.card-header');
+                  if (icon) icon.style.transform = 'scale(1.2) translateY(-5px) rotate(5deg)';
+                  if (header) header.style.transform = 'translateY(-5px)';
+                  this.style.transform = 'translateY(-15px) rotateX(5deg) rotateY(-5deg)';
+                  this.style.boxShadow = '0 30px 60px var(--shadow-color), 0 0 0 2px rgba(255, 255, 255, 0.4) inset';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                  const icon = this.querySelector('.project-icon');
+                  const header = this.querySelector('.card-header');
+                  if (icon) icon.style.transform = 'scale(1) translateY(0) rotate(0)';
+                  if (header) header.style.transform = 'translateY(0)';
+                  this.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+                  this.style.boxShadow = '0 15px 30px var(--shadow-color), 0 0 0 1px rgba(255, 255, 255, 0.3) inset';
+                });
+              });
+              
+              // Add 3D tilt effect to cards
+              document.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('mousemove', function(e) {
+                  const cardRect = this.getBoundingClientRect();
+                  const cardCenterX = cardRect.left + cardRect.width / 2;
+                  const cardCenterY = cardRect.top + cardRect.height / 2;
+                  const angleX = (e.clientY - cardCenterY) / 15;
+                  const angleY = (cardCenterX - e.clientX) / 15;
+                  
+                  this.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-5px)`;
+                  
+                  // Move icon for 3D effect
+                  const icon = this.querySelector('.project-icon');
+                  if (icon) {
+                    icon.style.transform = `translateX(${angleY * 2}px) translateY(${-angleX * 2}px)`;
+                  }
+                });
+              });
+              
+              // Initialize particles.js
+              particlesJS('particles-js', {
+                "particles": {
+                  "number": {
+                    "value": 80,
+                    "density": {
+                      "enable": true,
+                      "value_area": 800
+                    }
+                  },
+                  "color": {
+                    "value": "#6366f1"
+                  },
+                  "shape": {
+                    "type": "circle",
+                    "stroke": {
+                      "width": 0,
+                      "color": "#000000"
+                    },
+                  },
+                  "opacity": {
+                    "value": 0.3,
+                    "random": false,
+                    "anim": {
+                      "enable": false
+                    }
+                  },
+                  "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                      "enable": false
+                    }
+                  },
+                  "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#6366f1",
+                    "opacity": 0.2,
+                    "width": 1
+                  },
+                  "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                  }
+                },
+                "interactivity": {
+                  "detect_on": "canvas",
+                  "events": {
+                    "onhover": {
+                      "enable": true,
+                      "mode": "grab"
+                    },
+                    "onclick": {
+                      "enable": true,
+                      "mode": "push"
+                    },
+                    "resize": true
+                  },
+                  "modes": {
+                    "grab": {
+                      "distance": 140,
+                      "line_linked": {
+                        "opacity": 0.5
+                      }
+                    },
+                    "push": {
+                      "particles_nb": 4
+                    }
+                  }
+                },
+                "retina_detect": true
+              });
+              
+              // Theme switcher functionality
+              const root = document.documentElement;
+              const themeToggle = document.querySelector('.theme-toggle');
+              const themePanel = document.querySelector('.theme-panel');
+              const themeButtons = document.querySelectorAll('.theme-btn');
+              
+              // Toggle theme panel
+              themeToggle.addEventListener('click', () => {
+                themePanel.classList.toggle('open');
+              });
+              
+              // Theme selection
+              themeButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                  // Remove active class from all buttons
+                  themeButtons.forEach(b => b.classList.remove('active'));
+                  
+                  // Add active class to clicked button
+                  btn.classList.add('active');
+                  
+                  const theme = btn.getAttribute('data-theme');
+                  
+                  // Save theme preference
+                  localStorage.setItem('portfolio-theme', theme);
+                  
+                  // Apply theme
+                  applyTheme(theme);
+                });
+              });
+              
+              // Apply saved theme on load
+              const savedTheme = localStorage.getItem('portfolio-theme');
+              if (savedTheme) {
+                applyTheme(savedTheme);
+                document.querySelector(`.theme-${savedTheme}`).classList.add('active');
               }
-            },
-            "bubble": {
-              "distance": 400,
-              "size": 40,
-              "duration": 2,
-              "opacity": 8,
-              "speed": 3
-            },
-            "repulse": {
-              "distance": 200,
-              "duration": 0.4
-            },
-            "push": {
-              "particles_nb": 4
-            },
-            "remove": {
-              "particles_nb": 2
-            }
-          }
-        },
-        "retina_detect": true
-      });
-      
-      // Theme switcher functionality
-      const themeToggle = document.querySelector('.theme-toggle');
-      const themePanel = document.querySelector('.theme-panel');
-      const themeButtons = document.querySelectorAll('.theme-btn');
-      const root = document.documentElement;
-      
-      themeToggle.addEventListener('click', () => {
-        themePanel.classList.toggle('open');
-      });
-      
-      themeButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          // Remove active class from all buttons
-          themeButtons.forEach(b => b.classList.remove('active'));
-          
-          // Add active class to clicked button
-          btn.classList.add('active');
-          
-          const theme = btn.getAttribute('data-theme');
-          
-          // Save theme preference
-          localStorage.setItem('portfolio-theme', theme);
-          
-          // Apply theme
-          applyTheme(theme);
-        });
-      });
-      
-      // Apply saved theme on load
-      const savedTheme = localStorage.getItem('portfolio-theme');
-      if (savedTheme) {
-        applyTheme(savedTheme);
-        document.querySelector(`.theme-${savedTheme}`).classList.add('active');
-      }
-      
-      function applyTheme(theme) {
-        // Reset dark theme
-        document.body.classList.remove('dark-theme');
-        
-        // Apply specific theme colors
-        switch(theme) {
-          case 'indigo':
-            root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #6366f1, #4f46e5)');
-            root.style.setProperty('--primary-color', '#6366f1');
-            root.style.setProperty('--primary-color-rgb', '99, 102, 241');
-            root.style.setProperty('--secondary-color', '#4f46e5');
-            root.style.setProperty('--accent-color', '#f43f5e');
-            root.style.setProperty('--shadow-color', 'rgba(99, 102, 241, 0.2)');
-            break;
-          case 'rose':
-            root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #f43f5e, #ec4899)');
-            root.style.setProperty('--primary-color', '#f43f5e');
-            root.style.setProperty('--primary-color-rgb', '244, 63, 94');
-            root.style.setProperty('--secondary-color', '#ec4899');
-            root.style.setProperty('--accent-color', '#6366f1');
-            root.style.setProperty('--shadow-color', 'rgba(244, 63, 94, 0.2)');
-            break;
-          case 'emerald':
-            root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #10b981, #059669)');
-            root.style.setProperty('--primary-color', '#10b981');
-            root.style.setProperty('--primary-color-rgb', '16, 185, 129');
-            root.style.setProperty('--secondary-color', '#059669');
-            root.style.setProperty('--accent-color', '#f43f5e');
-            root.style.setProperty('--shadow-color', 'rgba(16, 185, 129, 0.2)');
-            break;
-          case 'amber':
-            root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #f59e0b, #d97706)');
-            root.style.setProperty('--primary-color', '#f59e0b');
-            root.style.setProperty('--primary-color-rgb', '245, 158, 11');
-            root.style.setProperty('--secondary-color', '#d97706');
-            root.style.setProperty('--accent-color', '#6366f1');
-            root.style.setProperty('--shadow-color', 'rgba(245, 158, 11, 0.2)');
-            break;
-          case 'sky':
-            root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #0ea5e9, #0284c7)');
-            root.style.setProperty('--primary-color', '#0ea5e9');
-            root.style.setProperty('--primary-color-rgb', '14, 165, 233');
-            root.style.setProperty('--secondary-color', '#0284c7');
-            root.style.setProperty('--accent-color', '#f43f5e');
-            root.style.setProperty('--shadow-color', 'rgba(14, 165, 233, 0.2)');
-            break;
-          case 'violet':
-            root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #8b5cf6, #7c3aed)');
-            root.style.setProperty('--primary-color', '#8b5cf6');
-            root.style.setProperty('--primary-color-rgb', '139, 92, 246');
-            root.style.setProperty('--secondary-color', '#7c3aed');
-            root.style.setProperty('--accent-color', '#f43f5e');
-            root.style.setProperty('--shadow-color', 'rgba(139, 92, 246, 0.2)');
-            break;
-          case 'slate':
-            root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #475569, #334155)');
-            root.style.setProperty('--primary-color', '#475569');
-            root.style.setProperty('--primary-color-rgb', '71, 85, 105');
-            root.style.setProperty('--secondary-color', '#334155');
-            root.style.setProperty('--accent-color', '#f43f5e');
-            root.style.setProperty('--shadow-color', 'rgba(71, 85, 105, 0.2)');
-            break;
-          case 'dark':
-            document.body.classList.add('dark-theme');
-            root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #1e293b, #0f172a)');
-            root.style.setProperty('--primary-color', '#1e293b');
-            root.style.setProperty('--primary-color-rgb', '30, 41, 59');
-            root.style.setProperty('--secondary-color', '#0f172a');
-            root.style.setProperty('--accent-color', '#f43f5e');
-            root.style.setProperty('--shadow-color', 'rgba(0, 0, 0, 0.3)');
-            break;
-        }
-        
-        // Update particles color
-        if (window.pJSDom && window.pJSDom[0]) {
-          window.pJSDom[0].pJS.particles.color.value = getComputedStyle(document.documentElement).getPropertyValue('--primary-color');
-          window.pJSDom[0].pJS.particles.line_linked.color = getComputedStyle(document.documentElement).getPropertyValue('--primary-color');
-          window.pJSDom[0].pJS.fn.particlesRefresh();
-        }
-      }
-    });
-  </script>
-</body>
-</html>
+              
+              function applyTheme(theme) {
+                // Reset dark theme
+                document.body.classList.remove('dark-theme');
+                
+                // Apply specific theme colors
+                switch(theme) {
+                  case 'indigo':
+                    root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #6366f1, #4f46e5)');
+                    root.style.setProperty('--primary-color', '#6366f1');
+                    root.style.setProperty('--primary-color-rgb', '99, 102, 241');
+                    root.style.setProperty('--secondary-color', '#4f46e5');
+                    root.style.setProperty('--accent-color', '#f43f5e');
+                    root.style.setProperty('--shadow-color', 'rgba(99, 102, 241, 0.2)');
+                    break;
+                  case 'rose':
+                    root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #f43f5e, #ec4899)');
+                    root.style.setProperty('--primary-color', '#f43f5e');
+                    root.style.setProperty('--primary-color-rgb', '244, 63, 94');
+                    root.style.setProperty('--secondary-color', '#ec4899');
+                    root.style.setProperty('--accent-color', '#6366f1');
+                    root.style.setProperty('--shadow-color', 'rgba(244, 63, 94, 0.2)');
+                    break;
+                  case 'emerald':
+                    root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #10b981, #059669)');
+                    root.style.setProperty('--primary-color', '#10b981');
+                    root.style.setProperty('--primary-color-rgb', '16, 185, 129');
+                    root.style.setProperty('--secondary-color', '#059669');
+                    root.style.setProperty('--accent-color', '#f43f5e');
+                    root.style.setProperty('--shadow-color', 'rgba(16, 185, 129, 0.2)');
+                    break;
+                  case 'amber':
+                    root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #f59e0b, #d97706)');
+                    root.style.setProperty('--primary-color', '#f59e0b');
+                    root.style.setProperty('--primary-color-rgb', '245, 158, 11');
+                    root.style.setProperty('--secondary-color', '#d97706');
+                    root.style.setProperty('--accent-color', '#6366f1');
+                    root.style.setProperty('--shadow-color', 'rgba(245, 158, 11, 0.2)');
+                    break;
+                  case 'sky':
+                    root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #0ea5e9, #0284c7)');
+                    root.style.setProperty('--primary-color', '#0ea5e9');
+                    root.style.setProperty('--primary-color-rgb', '14, 165, 233');
+                    root.style.setProperty('--secondary-color', '#0284c7');
+                    root.style.setProperty('--accent-color', '#f43f5e');
+                    root.style.setProperty('--shadow-color', 'rgba(14, 165, 233, 0.2)');
+                    break;
+                  case 'violet':
+                    root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #8b5cf6, #7c3aed)');
+                    root.style.setProperty('--primary-color', '#8b5cf6');
+                    root.style.setProperty('--primary-color-rgb', '139, 92, 246');
+                    root.style.setProperty('--secondary-color', '#7c3aed');
+                    root.style.setProperty('--accent-color', '#f43f5e');
+                    root.style.setProperty('--shadow-color', 'rgba(139, 92, 246, 0.2)');
+                    break;
+                  case 'slate':
+                    root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #475569, #334155)');
+                    root.style.setProperty('--primary-color', '#475569');
+                    root.style.setProperty('--primary-color-rgb', '71, 85, 105');
+                    root.style.setProperty('--secondary-color', '#334155');
+                    root.style.setProperty('--accent-color', '#f43f5e');
+                    root.style.setProperty('--shadow-color', 'rgba(71, 85, 105, 0.2)');
+                    break;
+                  case 'dark':
+                    document.body.classList.add('dark-theme');
+                    root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #1e293b, #0f172a)');
+                    root.style.setProperty('--primary-color', '#1e293b');
+                    root.style.setProperty('--primary-color-rgb', '30, 41, 59');
+                    root.style.setProperty('--secondary-color', '#0f172a');
+                    root.style.setProperty('--accent-color', '#f43f5e');
+                    root.style.setProperty('--shadow-color', 'rgba(0, 0, 0, 0.3)');
+                    break;
+                }
+                
+                // Update particles color
+                if (window.pJSDom && window.pJSDom[0]) {
+                  window.pJSDom[0].pJS.particles.color.value = getComputedStyle(document.documentElement).getPropertyValue('--primary-color');
+                  window.pJSDom[0].pJS.particles.line_linked.color = getComputedStyle(document.documentElement).getPropertyValue('--primary-color');
+                  window.pJSDom[0].pJS.fn.particlesRefresh();
+                }
+              }
+            });
+          </script>
+        </body>
+        </html>
