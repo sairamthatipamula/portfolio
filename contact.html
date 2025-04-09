@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thatipamula Sairam - Contact</title>
-  <!-- Add new font and animation libraries -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Abril+Fatface&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Contact Me | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* Theme color variables */
     :root {
@@ -30,7 +29,7 @@
       font-family: var(--font-body);
       background-color: var(--bg-color);
       background-image: 
-        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
         radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
         radial-gradient(circle at 75% 75%, rgba(236, 72, 153, 0.05) 0%, transparent 50%);
       background-size: 60px 60px, 100% 100%, 100% 100%;
@@ -44,6 +43,10 @@
       display: flex;
       flex-direction: column;
       overflow-x: hidden;
+    }
+    
+    * {
+      box-sizing: border-box;
     }
     
     .container {
@@ -90,6 +93,7 @@
       gap: 5px;
       padding: 0;
       margin: 0;
+      list-style: none;
     }
     
     .main-nav ul li {
@@ -200,100 +204,312 @@
       opacity: 0.8;
     }
     
-    /* Contact cards styling */
-    .contact-grid {
+    /* Contact form styling */
+    .contact-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 30px;
-      margin-bottom: 60px;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 80px;
+      width: 100%;
+      max-width: 100%;
+      overflow: visible;
     }
     
-    .contact-card {
+    .contact-info {
       background: var(--card-bg);
       border-radius: var(--border-radius);
-      overflow: hidden;
+      padding: 40px;
       box-shadow: 0 15px 30px var(--shadow-color),
                   0 0 0 1px rgba(255, 255, 255, 0.3) inset;
-      transition: var(--transition-smooth);
-      transform: translateY(0);
-      position: relative;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
       transform-style: preserve-3d;
-      perspective: 1000px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
+      transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      opacity: 0;
+      animation: fadeIn 0.8s forwards;
+      animation-delay: 100ms;
+      width: 100%;
+      overflow: hidden;
     }
     
-    .contact-card:hover {
+    .contact-info.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .contact-info:hover {
       transform: translateY(-10px) rotateX(2deg) rotateY(-2deg);
       box-shadow: 0 25px 50px var(--shadow-color),
                   0 0 0 1px rgba(255, 255, 255, 0.3) inset;
     }
     
-    .card-header {
-      padding: 25px;
-      background: var(--primary-gradient);
-      color: white;
+    .contact-info h3 {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: var(--primary-color);
       position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
+      display: inline-block;
     }
     
-    .contact-icon {
-      font-size: 2.5rem;
-      opacity: 0.9;
+    .contact-info h3::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 3px;
+      background: var(--primary-gradient);
+      bottom: -10px;
+      left: 0;
+      border-radius: 3px;
+    }
+    
+    .contact-details {
+      margin-top: 30px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+      transition: all 0.3s ease;
       transform-style: preserve-3d;
     }
     
-    .contact-title {
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
-      font-weight: 400;
-      margin: 0;
-      letter-spacing: 1px;
+    .contact-item:hover {
+      transform: translateX(10px);
     }
     
-    .card-body {
-      padding: 25px;
-      flex-grow: 1;
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--primary-gradient);
+      border-radius: 50%;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    
-    .card-text {
-      margin-bottom: 20px;
-      font-size: 1rem;
-      opacity: 0.9;
-      flex-grow: 1;
-    }
-    
-    .contact-link {
-      display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      background: var(--primary-gradient);
+      margin-right: 20px;
       color: white;
-      padding: 10px 20px;
-      border-radius: 30px;
-      font-weight: 600;
+      font-size: 1.2rem;
+      box-shadow: 0 10px 20px var(--shadow-color);
       transition: all 0.3s ease;
-      box-shadow: 0 5px 15px var(--shadow-color);
-      text-decoration: none;
-      margin: 5px;
+      transform-style: preserve-3d;
     }
     
-    .contact-link:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px var(--shadow-color);
+    .contact-item:hover .contact-icon {
+      transform: rotate(15deg) scale(1.1);
+    }
+    
+    .contact-text {
+      flex: 1;
+    }
+    
+    .contact-text h4 {
+      margin: 0 0 5px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-color);
+    }
+    
+    .contact-text p {
+      margin: 0;
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+    
+    .contact-form {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 40px;
+      box-shadow: 0 15px 30px var(--shadow-color),
+                  0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+      transform-style: preserve-3d;
+      transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      opacity: 0;
+      animation: fadeIn 0.8s forwards;
+      animation-delay: 300ms;
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    .contact-form.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .contact-form:hover {
+      transform: translateY(-10px) rotateX(2deg) rotateY(2deg);
+      box-shadow: 0 25px 50px var(--shadow-color),
+                  0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+    }
+    
+    .contact-form h3 {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: var(--primary-color);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .contact-form h3::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 3px;
+      background: var(--primary-gradient);
+      bottom: -10px;
+      left: 0;
+      border-radius: 3px;
+    }
+    
+    .form-group {
+      margin-bottom: 25px;
+      position: relative;
+      width: 100%;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 15px 20px;
+      border: 2px solid rgba(99, 102, 241, 0.1);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.8);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--text-color);
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      box-sizing: border-box;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      background: white;
+      box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
+      transform: translateY(-3px);
+    }
+    
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .form-label {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      font-size: 1rem;
+      color: rgba(30, 41, 59, 0.6);
+      transition: all 0.3s ease;
+      pointer-events: none;
+      background: transparent;
+    }
+    
+    .form-control:focus + .form-label,
+    .form-control:not(:placeholder-shown) + .form-label {
+      top: -12px;
+      left: 15px;
+      font-size: 0.85rem;
+      padding: 0 5px;
+      background: white;
+      color: var(--primary-color);
+      font-weight: 600;
+      z-index: 1;
+    }
+    
+    .submit-btn {
+      background: var(--primary-gradient);
       color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 10px 20px var(--shadow-color);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 30px var(--shadow-color);
+    }
+    
+    .submit-btn i {
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .submit-btn:hover i {
+      animation: sendIcon 1s ease infinite;
+    }
+    
+    .submit-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.1);
+      transform: rotate(45deg);
+      transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      opacity: 0;
+    }
+    
+    .submit-btn:hover::after {
+      opacity: 1;
+      transform: rotate(45deg) translateX(100%);
+    }
+    
+    /* Social media links */
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    
+    .social-link {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: var(--primary-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 8px 15px var(--shadow-color);
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+    }
+    
+    .social-link:hover {
+      transform: translateY(-8px) scale(1.15) rotate(10deg);
+      box-shadow: 0 15px 25px var(--shadow-color);
+    }
+    
+    .social-link::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .social-link:hover::after {
+      opacity: 1;
     }
     
     /* Modern footer styles */
@@ -304,14 +520,6 @@
       margin-top: auto;
       position: relative;
       overflow: hidden;
-      width: 100vw;
-      left: 0;
-      right: 0;
-      margin-left: -50vw;
-      margin-right: -50vw;
-      left: 50%;
-      right: 50%;
-      box-sizing: border-box;
     }
     
     footer::before {
@@ -480,7 +688,7 @@
       text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     }
     
-    /* New theme colors */
+    /* Theme colors */
     .theme-indigo {
       background: linear-gradient(135deg, #6366f1, #4f46e5);
     }
@@ -513,15 +721,15 @@
       background: linear-gradient(135deg, #1e293b, #0f172a);
     }
     
-    /* Advanced animations */
-    @keyframes fadeInUp {
+    /* Animations */
+    @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(30px) scale(0.95);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
       }
     }
     
@@ -530,10 +738,22 @@
         transform: translateY(0px) rotate(0deg);
       }
       50% {
-        transform: translateY(-10px) rotate(1deg);
+        transform: translateY(-10px) rotate(3deg);
       }
       100% {
         transform: translateY(0px) rotate(0deg);
+      }
+    }
+    
+    @keyframes sendIcon {
+      0% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(5px);
+      }
+      100% {
+        transform: translateX(0);
       }
     }
     
@@ -543,7 +763,7 @@
         opacity: 1;
       }
       50% {
-        transform: scale(1.2);
+        transform: scale(1.05);
         opacity: 0.8;
       }
       100% {
@@ -552,9 +772,52 @@
       }
     }
     
+    @keyframes shake {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+      }
+      20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+      }
+    }
+    
     .float-animation {
-      animation: float 5s ease-in-out infinite;
+      animation: float 6s ease-in-out infinite;
       transform-style: preserve-3d;
+    }
+    
+    .pulse-animation {
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    .shake-animation {
+      animation: shake 0.5s ease-in-out;
+    }
+    
+    /* Success and error messages */
+    .form-message {
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 20px;
+      display: none;
+      text-align: center;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .form-message.success {
+      background: rgba(16, 185, 129, 0.1);
+      color: #059669;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    
+    .form-message.error {
+      background: rgba(244, 63, 94, 0.1);
+      color: #e11d48;
+      border: 1px solid rgba(244, 63, 94, 0.3);
     }
     
     /* Dark theme specific styles */
@@ -574,14 +837,51 @@
       background: none;
     }
     
+    body.dark-theme .form-control:focus + .form-label,
+    body.dark-theme .form-control:not(:placeholder-shown) + .form-label {
+      background: var(--card-bg);
+      color: #ffffff;
+    }
+    
+    /* Additional dark theme text improvements */
+    body.dark-theme .contact-text h4,
+    body.dark-theme .contact-info p,
+    body.dark-theme .contact-form h3,
+    body.dark-theme .contact-info h3 {
+      color: #e2e8f0;
+    }
+    
+    body.dark-theme .form-control {
+      background: rgba(30, 41, 59, 0.7);
+      color: #e2e8f0;
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+    
+    body.dark-theme .form-label {
+      color: #94a3b8;
+    }
+    
+    body.dark-theme .page-subtitle {
+      color: #cbd5e1;
+    }
+    
     /* Responsive styles */
+    @media (max-width: 992px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 992px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    
     @media (max-width: 768px) {
       .page-title {
         font-size: 3rem;
-      }
-      
-      .contact-grid {
-        grid-template-columns: 1fr;
       }
       
       .main-nav ul li a {
@@ -591,6 +891,42 @@
       
       .main-nav ul li a i {
         margin-right: 5px;
+      }
+      
+      .contact-info, .contact-form {
+        padding: 30px 20px;
+      }
+      
+      .form-control {
+        font-size: 0.9rem;
+        padding: 12px 15px;
+      }
+      
+      .form-label {
+        font-size: 0.9rem;
+      }
+      
+      .submit-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .contact-container {
+        gap: 30px;
+      }
+      
+      .page-title {
+        font-size: 2.5rem;
+      }
+      
+      .contact-info, .contact-form {
+        padding: 25px 15px;
+      }
+      
+      .social-links {
+        justify-content: center;
       }
     }
   </style>
@@ -623,13 +959,13 @@
     <div class="container">
       <nav class="main-nav">
         <ul>
-          <li><a href="index.html" data-aos="fade-down" data-aos-delay="100"><i class="fas fa-user-circle"></i> About Me</a></li>
-          <li><a href="projects.html" data-aos="fade-down" data-aos-delay="200"><i class="fas fa-laptop-code"></i> Projects</a></li>
-          <li><a href="certificates.html" data-aos="fade-down" data-aos-delay="300"><i class="fas fa-award"></i> Certificates</a></li>
-          <li><a href="skills.html" data-aos="fade-down" data-aos-delay="400"><i class="fas fa-brain"></i> Technical Skills</a></li>
-          <li><a href="education.html" data-aos="fade-down" data-aos-delay="500"><i class="fas fa-graduation-cap"></i> Education</a></li>
-          <li><a href="training.html" data-aos="fade-down" data-aos-delay="600"><i class="fas fa-chalkboard-teacher"></i> Online Training</a></li>
-          <li><a href="contact.html" class="active" data-aos="fade-down" data-aos-delay="700"><i class="fas fa-paper-plane"></i> Contact</a></li>
+          <li><a href="index.html"><i class="fas fa-user-circle"></i> About Me</a></li>
+          <li><a href="projects.html"><i class="fas fa-laptop-code"></i> Projects</a></li>
+          <li><a href="certificates.html"><i class="fas fa-award"></i> Certificates</a></li>
+          <li><a href="skills.html"><i class="fas fa-brain"></i> Technical Skills</a></li>
+          <li><a href="education.html"><i class="fas fa-graduation-cap"></i> Education</a></li>
+          <li><a href="training.html"><i class="fas fa-chalkboard-teacher"></i> Online Training</a></li>
+          <li><a href="contact.html" class="active"><i class="fas fa-paper-plane"></i> Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -639,60 +975,94 @@
     <div class="container">
       <div class="page-header" data-aos="fade-up">
         <h1 class="page-title float-animation">Get In Touch</h1>
-        <p class="page-subtitle" data-aos="fade-up" data-aos-delay="200">Feel free to reach out through any of these channels. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+        <p class="page-subtitle">Feel free to reach out for collaborations, opportunities, or just to say hello!</p>
       </div>
       
-      <div class="contact-grid">
-        <!-- Phone Card -->
-        <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="card-header">
-            <i class="fas fa-phone contact-icon float-animation"></i>
-            <h3 class="contact-title">Phone</h3>
-          </div>
-          <div class="card-body">
-            <p class="card-text">Feel free to call me directly or connect via WhatsApp for a quick response.</p>
-            <a href="https://wa.me/9553542050" target="_blank" class="contact-link">
-              <i class="fab fa-whatsapp"></i> WhatsApp Me
-            </a>
-          </div>
-        </div>
-        
-        <!-- Email Card -->
-        <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="card-header">
-            <i class="fas fa-envelope contact-icon float-animation"></i>
-            <h3 class="contact-title">Email</h3>
-          </div>
-          <div class="card-body">
-            <p class="card-text">Send me an email anytime. I typically respond within 24 hours.</p>
-            <a href="mailto:sairamthatipamula69@gmail.com" class="contact-link">
-              <i class="fas fa-paper-plane"></i> Send Email
-            </a>
-          </div>
-        </div>
-        
-        <!-- Social Card -->
-        <div class="contact-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="card-header">
-            <i class="fas fa-globe contact-icon float-animation"></i>
-            <h3 class="contact-title">Social</h3>
-          </div>
-          <div class="card-body">
-            <p class="card-text">Connect with me professionally on LinkedIn or check out my projects on GitHub.</p>
-            <div>
-              <a href="https://www.linkedin.com/in/sairam018" target="_blank" class="contact-link">
-                <i class="fab fa-linkedin"></i> LinkedIn
-              </a>
-              <a href="https://github.com/sairamthatipamula" target="_blank" class="contact-link">
-                <i class="fab fa-github"></i> GitHub
-              </a>
-              <a href="https://www.instagram.com/sairam__gupta__?igsh=MThmYW1xMmFqYTljeQ%3D%3D&utm_source=qr" target="_blank" class="contact-link">
-                <i class="fab fa-instagram"></i> Instagram
-              </a>
+      <div class="contact-container">
+        <div class="contact-info" style="--delay: 1">
+          <h3>Contact Information</h3>
+          <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+          
+          <div class="contact-details">
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Email</h4>
+                <p>sairamthatipamula69@gmail.com</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Phone</h4>
+                <p>+91 9553542050</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+
+              <div class="contact-text">
+                <h4>Location</h4>
+                <p>Hyderabad, Telangana</p>
+              </div>
             </div>
           </div>
+          
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/sairam018/" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/sairamthatipamula" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://x.com/SAIRAM_610" target="_blank" rel="noopener noreferrer" class="social-link" title="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/sairam__gupta__?igsh=MThmYW1xMmFqYTljeQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
         </div>
-      </div>
+        
+        <div class="contact-form" style="--delay: 2">
+          <h3>Send Me a Message</h3>
+          <form id="contactForm">
+            <div class="form-group">
+              <input type="text" class="form-control" id="name" name="name" placeholder=" " required>
+              <label for="name" class="form-label">Your Name</label>
+            </div>
+            
+            <div class="form-group">
+              <input type="email" class="form-control" id="email" name="email" placeholder=" " required>
+              <label for="email" class="form-label">Your Email</label>
+            </div>
+            
+            <div class="form-group">
+              <input type="text" class="form-control" id="subject" name="subject" placeholder=" " required>
+              <label for="subject" class="form-label">Subject</label>
+            </div>
+            
+            <div class="form-group">
+              <textarea class="form-control" id="message" name="message" placeholder=" " required></textarea>
+              <label for="message" class="form-label">Your Message</label>
+            </div>
+            
+            <button type="submit" class="submit-btn">
+              Send Message <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+          <div class="form-message success">Your message has been sent successfully!</div>
+          <div class="form-message error">Oops! Something went wrong. Please try again.</div>
+        </div>
     </div>
   </section>
 
@@ -705,137 +1075,213 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Initialize AOS animations
+      // Initialize AOS with better settings
       AOS.init({
-        duration: 800,
-        easing: 'ease-out',
-        once: false
+        duration: 1000,
+        easing: 'ease-out-cubic',
+        once: false,
+        mirror: true,
+        anchorPlacement: 'top-bottom'
       });
       
-      // Initialize particles.js
-      particlesJS('particles-js', {
-        "particles": {
-          "number": {
-            "value": 80,
-            "density": {
-              "enable": true,
-              "value_area": 800
-            }
-          },
-          "color": {
-            "value": "#6366f1"
-          },
-          "shape": {
-            "type": "circle",
-            "stroke": {
-              "width": 0,
-              "color": "#000000"
-            },
-            "polygon": {
-              "nb_sides": 5
-            }
-          },
-          "opacity": {
-            "value": 0.5,
-            "random": false,
-            "anim": {
-              "enable": false,
-              "speed": 1,
-              "opacity_min": 0.1,
-              "sync": false
-            }
-          },
-          "size": {
-            "value": 3,
-            "random": true,
-            "anim": {
-              "enable": false,
-              "speed": 40,
-              "size_min": 0.1,
-              "sync": false
-            }
-          },
-          "line_linked": {
-            "enable": true,
-            "distance": 150,
-            "color": "#6366f1",
-            "opacity": 0.4,
-            "width": 1
-          },
-          "move": {
-            "enable": true,
-            "speed": 6,
-            "direction": "none",
-            "random": false,
-            "straight": false,
-            "out_mode": "out",
-            "bounce": false,
-            "attract": {
-              "enable": false,
-              "rotateX": 600,
-              "rotateY": 1200
-            }
+      // Make contact info and form visible with animation
+      document.querySelectorAll('.contact-info, .contact-form').forEach(el => {
+        el.classList.add('visible');
+      });
+      
+      // Form validation and submission
+      const contactForm = document.getElementById('contactForm');
+      const successMessage = document.querySelector('.form-message.success');
+      const errorMessage = document.querySelector('.form-message.error');
+      
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Get form values
+          const name = document.getElementById('name').value;
+          const email = document.getElementById('email').value;
+          const subject = document.getElementById('subject').value;
+          const message = document.getElementById('message').value;
+          
+          // Simple animation to show submission
+          const submitBtn = this.querySelector('.submit-btn');
+          const originalText = submitBtn.innerHTML;
+          
+          submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Sending...';
+          submitBtn.disabled = true;
+          
+          try {
+            // Create mailto link
+            const mailtoLink = `mailto:sairamthatipamula69@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+            submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            
+            // Display success message
+            successMessage.style.display = 'block';
+            
+            // Reset form after delay
+            setTimeout(() => {
+              contactForm.reset();
+              submitBtn.innerHTML = originalText;
+              submitBtn.style.background = '';
+              submitBtn.disabled = false;
+              successMessage.style.display = 'none';
+            }, 3000);
+          } catch (error) {
+            console.error('Error:', error);
+            
+            // Show error message
+            submitBtn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Failed!';
+            submitBtn.style.background = 'linear-gradient(135deg, #f43f5e, #e11d48)';
+            submitBtn.classList.add('shake-animation');
+            
+            // Display error message
+            errorMessage.style.display = 'block';
+            
+            // Reset button after delay
+            setTimeout(() => {
+              submitBtn.innerHTML = originalText;
+              submitBtn.style.background = '';
+              submitBtn.disabled = false;
+              submitBtn.classList.remove('shake-animation');
+              errorMessage.style.display = 'none';
+            }, 3000);
           }
-        },
-        "interactivity": {
-          "detect_on": "canvas",
-          "events": {
-            "onhover": {
-              "enable": true,
-              "mode": "repulse"
-            },
-            "onclick": {
-              "enable": true,
-              "mode": "push"
-            },
-            "resize": true
-          },
-          "modes": {
-            "grab": {
-              "distance": 400,
-              "line_linked": {
-                "opacity": 1
-              }
-            },
-            "bubble": {
-              "distance": 400,
-              "size": 40,
-              "duration": 2,
-              "opacity": 8,
-              "speed": 3
-            },
-            "repulse": {
-              "distance": 200,
-              "duration": 0.4
-            },
-            "push": {
-              "particles_nb": 4
-            },
-            "remove": {
-              "particles_nb": 2
+        });
+      }
+          
+          // Simple animation to show submission
+          const submitBtn = this.querySelector('.submit-btn');
+          const originalText = submitBtn.innerHTML;
+          
+          submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Sending...';
+          submitBtn.disabled = true;
+          
+          // Simulate form submission (replace with actual form submission)
+          const formData = new FormData(contactForm);
+          
+          // Use fetch to submit the form to Formspree
+          fetch('https://formspree.io/f/xbjnkdqj', {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
             }
-          }
-        },
-        "retina_detect": true
+          })
+          .then(response => {
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          })
+          .then(data => {
+            // Show success message
+            submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+            submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            
+            // Display success message
+            successMessage.style.display = 'block';
+            
+            // Reset form after delay
+            setTimeout(() => {
+              contactForm.reset();
+              submitBtn.innerHTML = originalText;
+              submitBtn.style.background = '';
+              submitBtn.disabled = false;
+              successMessage.style.display = 'none';
+            }, 3000);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            
+            // Show error message
+            submitBtn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Failed!';
+            submitBtn.style.background = 'linear-gradient(135deg, #f43f5e, #e11d48)';
+            submitBtn.classList.add('shake-animation');
+            
+            // Display error message
+            errorMessage.style.display = 'block';
+            
+            // Reset button after delay
+            setTimeout(() => {
+              submitBtn.innerHTML = originalText;
+              submitBtn.style.background = '';
+              submitBtn.disabled = false;
+              submitBtn.classList.remove('shake-animation');
+              errorMessage.style.display = 'none';
+            }, 3000);
+          });
+        });
+      
+      
+      // 3D tilt effect for contact cards with better boundaries
+      document.querySelectorAll('.contact-info, .contact-form').forEach(card => {
+        card.addEventListener('mousemove', function(e) {
+          const cardRect = this.getBoundingClientRect();
+          const cardCenterX = cardRect.left + cardRect.width / 2;
+          const cardCenterY = cardRect.top + cardRect.height / 2;
+          
+          // Limit the rotation angle to a smaller range
+          const maxAngle = 5; // reduced from default
+          const percentX = (e.clientX - cardCenterX) / (cardRect.width / 2);
+          const percentY = (e.clientY - cardCenterY) / (cardRect.height / 2);
+          const angleX = Math.max(Math.min(percentY * maxAngle, maxAngle), -maxAngle);
+          const angleY = Math.max(Math.min(-percentX * maxAngle, maxAngle), -maxAngle);
+          
+          this.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-5px)`;
+          
+          // Add depth to icons
+          const icons = this.querySelectorAll('.contact-icon, .social-link');
+          icons.forEach(icon => {
+            icon.style.transform = `translateX(${angleY * 2}px) translateY(${-angleX * 2}px)`;
+          });
+        });
+        
+        card.addEventListener('mouseleave', function() {
+          // Smooth transition back to original position
+          this.style.transition = 'transform 0.5s ease-out';
+          this.style.transform = '';
+          
+          const icons = this.querySelectorAll('.contact-icon, .social-link');
+          icons.forEach(icon => {
+            icon.style.transition = 'transform 0.5s ease-out';
+            icon.style.transform = '';
+          });
+          
+          // Remove the transition after it completes to allow smooth mousemove again
+          setTimeout(() => {
+            this.style.transition = '';
+            icons.forEach(icon => {
+              icon.style.transition = '';
+            });
+          }, 500);
+        });
       });
       
       // Theme switcher functionality
+      const root = document.documentElement;
       const themeToggle = document.querySelector('.theme-toggle');
       const themePanel = document.querySelector('.theme-panel');
       const themeButtons = document.querySelectorAll('.theme-btn');
-      const root = document.documentElement;
       
+      // Toggle theme panel
       themeToggle.addEventListener('click', () => {
         themePanel.classList.toggle('open');
       });
       
+      // Theme selection
       themeButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', function() {
           // Remove active class from all buttons
           themeButtons.forEach(b => b.classList.remove('active'));
           
@@ -868,7 +1314,6 @@
           case 'indigo':
             root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #6366f1, #4f46e5)');
             root.style.setProperty('--primary-color', '#6366f1');
-            root.style.setProperty('--primary-color-rgb', '99, 102, 241');
             root.style.setProperty('--secondary-color', '#4f46e5');
             root.style.setProperty('--accent-color', '#f43f5e');
             root.style.setProperty('--shadow-color', 'rgba(99, 102, 241, 0.2)');
@@ -876,7 +1321,6 @@
           case 'rose':
             root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #f43f5e, #ec4899)');
             root.style.setProperty('--primary-color', '#f43f5e');
-            root.style.setProperty('--primary-color-rgb', '244, 63, 94');
             root.style.setProperty('--secondary-color', '#ec4899');
             root.style.setProperty('--accent-color', '#6366f1');
             root.style.setProperty('--shadow-color', 'rgba(244, 63, 94, 0.2)');
@@ -884,7 +1328,6 @@
           case 'emerald':
             root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #10b981, #059669)');
             root.style.setProperty('--primary-color', '#10b981');
-            root.style.setProperty('--primary-color-rgb', '16, 185, 129');
             root.style.setProperty('--secondary-color', '#059669');
             root.style.setProperty('--accent-color', '#f43f5e');
             root.style.setProperty('--shadow-color', 'rgba(16, 185, 129, 0.2)');
@@ -892,7 +1335,6 @@
           case 'amber':
             root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #f59e0b, #d97706)');
             root.style.setProperty('--primary-color', '#f59e0b');
-            root.style.setProperty('--primary-color-rgb', '245, 158, 11');
             root.style.setProperty('--secondary-color', '#d97706');
             root.style.setProperty('--accent-color', '#6366f1');
             root.style.setProperty('--shadow-color', 'rgba(245, 158, 11, 0.2)');
@@ -900,7 +1342,6 @@
           case 'sky':
             root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #0ea5e9, #0284c7)');
             root.style.setProperty('--primary-color', '#0ea5e9');
-            root.style.setProperty('--primary-color-rgb', '14, 165, 233');
             root.style.setProperty('--secondary-color', '#0284c7');
             root.style.setProperty('--accent-color', '#f43f5e');
             root.style.setProperty('--shadow-color', 'rgba(14, 165, 233, 0.2)');
@@ -908,7 +1349,6 @@
           case 'violet':
             root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #8b5cf6, #7c3aed)');
             root.style.setProperty('--primary-color', '#8b5cf6');
-            root.style.setProperty('--primary-color-rgb', '139, 92, 246');
             root.style.setProperty('--secondary-color', '#7c3aed');
             root.style.setProperty('--accent-color', '#f43f5e');
             root.style.setProperty('--shadow-color', 'rgba(139, 92, 246, 0.2)');
@@ -916,7 +1356,6 @@
           case 'slate':
             root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #475569, #334155)');
             root.style.setProperty('--primary-color', '#475569');
-            root.style.setProperty('--primary-color-rgb', '71, 85, 105');
             root.style.setProperty('--secondary-color', '#334155');
             root.style.setProperty('--accent-color', '#f43f5e');
             root.style.setProperty('--shadow-color', 'rgba(71, 85, 105, 0.2)');
@@ -925,7 +1364,6 @@
             document.body.classList.add('dark-theme');
             root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #1e293b, #0f172a)');
             root.style.setProperty('--primary-color', '#1e293b');
-            root.style.setProperty('--primary-color-rgb', '30, 41, 59');
             root.style.setProperty('--secondary-color', '#0f172a');
             root.style.setProperty('--accent-color', '#f43f5e');
             root.style.setProperty('--shadow-color', 'rgba(0, 0, 0, 0.3)');
@@ -939,7 +1377,85 @@
           window.pJSDom[0].pJS.fn.particlesRefresh();
         }
       }
-    });
+      
+      // Initialize particles.js
+      particlesJS('particles-js', {
+        "particles": {
+          "number": {
+            "value": 80,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": "#6366f1"
+          },
+          "shape": {
+            "type": "circle",
+            "stroke": {
+              "width": 0,
+              "color": "#000000"
+            },
+          },
+          "opacity": {
+            "value": 0.3,
+            "random": false,
+            "anim": {
+              "enable": false
+            }
+          },
+          "size": {
+            "value": 3,
+            "random": true,
+            "anim": {
+              "enable": false
+            }
+          },
+          "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": "#6366f1",
+            "opacity": 0.2,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 2,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "grab"
+            },
+            "onclick": {
+              "enable": true,
+              "mode": "push"
+            },
+            "resize": true
+          },
+          "modes": {
+            "grab": {
+              "distance": 140,
+              "line_linked": {
+                "opacity": 0.5
+              }
+            },
+            "push": {
+              "particles_nb": 4
+            }
+          }
+        },
+        "retina_detect": true
+      });
   </script>
 </body>
 </html>
