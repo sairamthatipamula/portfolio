@@ -29,10 +29,6 @@
     body {
       font-family: var(--font-body);
       background-color: var(--bg-color);
-      background-image: 
-        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
-        radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, rgba(236, 72, 153, 0.05) 0%, transparent 50%);
       background-size: 60px 60px, 100% 100%, 100% 100%;
       background-attachment: fixed;
       color: var(--text-color);
@@ -156,6 +152,21 @@
       position: relative;
     }
     
+    @keyframes fontChange {
+      0% {
+        font-family: 'Abril Fatface', cursive;
+      }
+      33% {
+        font-family: 'Montserrat', sans-serif;
+      }
+      66% {
+        font-family: 'Courier New', monospace;
+      }
+      100% {
+        font-family: 'Abril Fatface', cursive;
+      }
+    }
+    
     .page-title {
       font-family: var(--font-heading);
       font-size: 5rem;
@@ -171,6 +182,7 @@
       text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
       transform-style: preserve-3d;
       perspective: 1000px;
+      animation: fontChange 6s infinite; /* Apply the font change animation */
     }
     
     .page-title::after {
@@ -412,7 +424,7 @@
     /* Enhanced theme switcher */
     .theme-panel {
       position: fixed;
-      top: 20%; /* Changed from 50% to 20% to move it higher */
+      top: 20%;
       right: 0;
       transform: translateY(-50%);
       z-index: 1000;
@@ -435,34 +447,21 @@
       box-shadow: -5px 0 15px var(--shadow-color);
       position: relative;
       z-index: 2;
-      font-size: 1.2rem;
+      font-size: 1.5rem; /* Adjust font size to match contact.html */
       transform-style: preserve-3d;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     
-    .theme-toggle:hover {
-      transform: translateX(-5px) rotateY(-10deg);
-    }
-    
-    .theme-toggle i {
-      transition: transform 0.5s ease;
-      transform-style: preserve-3d;
-    }
-    
-    .theme-panel.open .theme-toggle i {
-      transform: rotateY(180deg);
-    }
-    
     .theme-options {
       position: absolute;
-      right: -250px;
+      right: -200px; /* Adjust width to match contact.html */
       top: 0;
       background: var(--card-bg);
       border-radius: 12px 0 0 12px;
-      padding: 20px;
+      padding: 15px; /* Adjust padding to match contact.html */
       box-shadow: -5px 0 20px var(--shadow-color);
       transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      width: 200px;
+      width: 150px; /* Adjust width to match contact.html */
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.2);
       transform-style: preserve-3d;
@@ -470,6 +469,15 @@
       opacity: 0;
     }
     
+        
+.theme-toggle i {
+  transition: transform 0.5s ease;
+  transform-style: preserve-3d;
+}
+    
+    .theme-panel.open .theme-toggle i {
+      transform: rotateY(180deg);
+    }
     .theme-panel.open .theme-options {
       right: 50px;
       transform: rotateY(0deg);
@@ -523,21 +531,14 @@
     }
     
     .theme-btn.active {
-      border: 2px solid white;
+      border: 7px solid rgb(48, 48, 48);
       transform: scale(1.05);
-    }
-    
-    .theme-btn.active::after {
-      content: '✓';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
-      font-size: 24px;
-      font-weight: bold;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    }
+}
+
+/* Remove tick mark */
+.theme-btn.active::after {
+  content: none;
+}
     
     /* New theme colors */
     .theme-indigo {
@@ -634,22 +635,27 @@
       animation: shimmer 3s infinite;
     }
     
-    /* Dark theme specific styles */
-    body.dark-theme {
-      --bg-color: #0f172a;
-      --text-color: #e2e8f0;
-      --card-bg: rgba(30, 41, 59, 0.95);
-      --shadow-color: rgba(0, 0, 0, 0.3);
-    }
-    
-    /* Make name visible in dark theme */
-    body.dark-theme .page-title {
-      color: #ffffff;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(99, 102, 241, 0.2);
-      -webkit-background-clip: initial;
-      background-clip: initial;
-      background: none;
-    }
+/* Dark theme specific styles */
+body.dark-theme {
+  --bg-color: #0f172a;
+  --text-color: #e2e8f0;
+  --card-bg: rgba(30, 41, 59, 0.95);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Make title visible in dark theme */
+body.dark-theme .page-title {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(99, 102, 241, 0.2);
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  background: none;
+}
+
+/* Make theme title visible in dark theme */
+body.dark-theme .theme-title {
+  color: #ffffff;
+}
     
     /* Responsive styles */
     @media (max-width: 768px) {
@@ -735,7 +741,7 @@
       </div>
       
       <div class="download-container" data-aos="zoom-in" data-aos-delay="500">
-        <a href="Spcialcv NEW.pdf" download="Spcialcv NEW.pdf" class="download-btn">
+        <a href="/Users/sairamgupta/Downloads/Files" download="SplCV🔗.pdf" class="download-btn">
           <i class="fas fa-file-download"></i> Download CV
         </a>
       </div>
@@ -754,242 +760,265 @@
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Initialize AOS animations
-      AOS.init({
-        duration: 800,
-        easing: 'ease-out',
-        once: false
-      });
-      
-      // Initialize Typed.js
-      const options = {
-        strings: ['Machine Learning Engineer', 'Software Developer', 'IOS Developer (Beginner)'],
-        typeSpeed: 50,
-        backSpeed: 30,
-        backDelay: 2000,
-        loop: true,
-        showCursor: true,
-      };
-      
-      new Typed('.typing-text', options);
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize AOS animations
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out',
+      once: false
+    });
 
-  // Initialize particles.js
-  particlesJS('particles-js', {
-    "particles": {
-      "number": {
-        "value": 80,
-        "density": {
-          "enable": true,
-          "value_area": 800
-        }
-      },
-      "color": {
-        "value": "#6366f1"
-      },
-      "shape": {
-        "type": "circle",
-        "stroke": {
-          "width": 0,
-          "color": "#000000"
-        },
-        "polygon": {
-          "nb_sides": 5
-        }
-      },
-      "opacity": {
-        "value": 0.5,
-        "random": false,
-        "anim": {
-          "enable": false,
-          "speed": 1,
-          "opacity_min": 0.1,
-          "sync": false
-        }
-      },
-      "size": {
-        "value": 3,
-        "random": true,
-        "anim": {
-          "enable": false,
-          "speed": 40,
-          "size_min": 0.1,
-          "sync": false
-        }
-      },
-      "line_linked": {
-        "enable": true,
-        "distance": 150,
-        "color": "#6366f1",
-        "opacity": 0.4,
-        "width": 1
-      },
-      "move": {
-        "enable": true,
-        "speed": 6,
-        "direction": "none",
-        "random": false,
-        "straight": false,
-        "out_mode": "out",
-        "bounce": false,
-        "attract": {
-          "enable": false,
-          "rotateX": 600,
-          "rotateY": 1200
-        }
+    // Initialize Typed.js
+    const options = {
+      strings: ['Machine Learning Engineer', 'Software Developer', 'IOS Developer (Beginner)'],
+      typeSpeed: 50,
+      backSpeed: 30,
+      backDelay: 2000,
+      loop: true,
+      showCursor: true,
+    };
+
+    new Typed('.typing-text', options);
+
+    // Font change effect for the title
+    const titleElement = document.querySelector('.page-title');
+    const fonts = [
+      'Abril Fatface', 'Montserrat', 'Courier New', 'Roboto', 'Lobster', 
+      'Pacifico', 'Oswald', 'Raleway', 'Playfair Display', 'Merriweather'
+    ];
+    let currentFontIndex = 0;
+    let intervalTime = 2000; // Initial interval time
+
+    function changeFont() {
+      titleElement.style.fontFamily = fonts[currentFontIndex];
+      currentFontIndex = (currentFontIndex + 1) % fonts.length;
+
+      // Reduce interval time after each complete cycle
+      if (currentFontIndex === 0) {
+        intervalTime = Math.max(500, intervalTime - 200); // Reduce by 200ms, minimum 500ms
       }
-    },
-    "interactivity": {
-      "detect_on": "canvas",
-      "events": {
-        "onhover": {
-          "enable": true,
-          "mode": "repulse"
-        },
-        "onclick": {
-          "enable": true,
-          "mode": "push"
-        },
-        "resize": true
-      },
-      "modes": {
-        "grab": {
-          "distance": 400,
-          "line_linked": {
-            "opacity": 1
+
+      setTimeout(changeFont, intervalTime);
+    }
+
+    changeFont(); // Start the font change loop
+
+    // Initialize particles.js
+    particlesJS('particles-js', {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
           }
         },
-        "bubble": {
-          "distance": 400,
-          "size": 40,
-          "duration": 2,
-          "opacity": 8,
-          "speed": 3
+        "color": {
+          "value": "#6366f1"
         },
-        "repulse": {
-          "distance": 200,
-          "duration": 0.4
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          }
         },
-        "push": {
-          "particles_nb": 4
+        "opacity": {
+          "value": 0.5,
+          "random": false,
+          "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
         },
-        "remove": {
-          "particles_nb": 2
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": {
+            "enable": false,
+            "speed": 40,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#6366f1",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 6,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": false,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "repulse"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 400,
+            "line_linked": {
+              "opacity": 1
+            }
+          },
+          "bubble": {
+            "distance": 400,
+            "size": 40,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+            },
+            "repulse": {
+              "distance": 200,
+              "duration": 0.4
+            },
+            "push": {
+              "particles_nb": 4
+            },
+            "remove": {
+              "particles_nb": 2
+            }
+          }
+        },
+        "retina_detect": true
+      });
+
+      // Theme switcher functionality
+      const themeToggle = document.querySelector('.theme-toggle');
+      const themePanel = document.querySelector('.theme-panel');
+      const themeButtons = document.querySelectorAll('.theme-btn');
+
+      themeToggle.addEventListener('click', () => {
+        themePanel.classList.toggle('open');
+      });
+
+      themeButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const theme = btn.getAttribute('data-theme');
+
+          // Remove active class from all buttons
+          themeButtons.forEach(b => b.classList.remove('active'));
+
+          // Add active class to clicked button
+          btn.classList.add('active');
+
+          // Apply theme
+          applyTheme(theme);
+
+          // Save theme preference
+          localStorage.setItem('portfolio-theme', theme);
+        });
+      });
+
+      // Apply saved theme on load
+      const savedTheme = localStorage.getItem('portfolio-theme');
+      if (savedTheme) {
+        applyTheme(savedTheme);
+        document.querySelector(`.theme-${savedTheme}`).classList.add('active');
+      }
+
+      function applyTheme(theme) {
+        const root = document.documentElement;
+
+        // Reset dark theme
+        document.body.classList.remove('dark-theme');
+
+        // Apply specific theme colors
+        switch(theme) {
+          case 'rose':
+            root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #f43f5e, #ec4899)');
+            root.style.setProperty('--primary-color', '#ec4899');
+            root.style.setProperty('--secondary-color', '#f43f5e');
+            root.style.setProperty('--accent-color', '#6366f1');
+            root.style.setProperty('--shadow-color', 'rgba(236, 72, 153, 0.15)');
+            break;
+          case 'emerald':
+            root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #10b981, #059669)');
+            root.style.setProperty('--primary-color', '#059669');
+            root.style.setProperty('--secondary-color', '#10b981');
+            root.style.setProperty('--accent-color', '#f59e0b');
+            root.style.setProperty('--shadow-color', 'rgba(5, 150, 105, 0.15)');
+            break;
+          case 'amber':
+            root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #f59e0b, #d97706)');
+            root.style.setProperty('--primary-color', '#d97706');
+            root.style.setProperty('--secondary-color', '#f59e0b');
+            root.style.setProperty('--accent-color', '#0ea5e9');
+            root.style.setProperty('--shadow-color', 'rgba(217, 119, 6, 0.15)');
+            break;
+          case 'sky':
+            root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #0ea5e9, #0284c7)');
+            root.style.setProperty('--primary-color', '#0284c7');
+            root.style.setProperty('--secondary-color', '#0ea5e9');
+            root.style.setProperty('--accent-color', '#8b5cf6');
+            root.style.setProperty('--shadow-color', 'rgba(2, 132, 199, 0.15)');
+            break;
+          case 'violet':
+            root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #8b5cf6, #7c3aed)');
+            root.style.setProperty('--primary-color', '#7c3aed');
+            root.style.setProperty('--secondary-color', '#8b5cf6');
+            root.style.setProperty('--accent-color', '#ec4899');
+            root.style.setProperty('--shadow-color', 'rgba(124, 58, 237, 0.15)');
+            break;
+          case 'slate':
+            root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #475569, #334155)');
+            root.style.setProperty('--primary-color', '#334155');
+            root.style.setProperty('--secondary-color', '#475569');
+            root.style.setProperty('--accent-color', '#f59e0b');
+            root.style.setProperty('--shadow-color', 'rgba(51, 65, 85, 0.15)');
+            break;
+          case 'dark':
+              document.body.classList.add('dark-theme');
+              root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #1e293b, #0f172a)');
+              root.style.setProperty('--primary-color', '#0f172a');
+              root.style.setProperty('--secondary-color', '#1e293b');
+              root.style.setProperty('--accent-color', '#f43f5e');
+              root.style.setProperty('--shadow-color', 'rgba(0, 0, 0, 0.3)');
+              break;
+          default: // indigo (default)
+            root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #6366f1, #4f46e5)');
+            root.style.setProperty('--primary-color', '#4f46e5');
+            root.style.setProperty('--secondary-color', '#6366f1');
+            root.style.setProperty('--accent-color', '#ec4899');
+            root.style.setProperty('--shadow-color', 'rgba(79, 70, 229, 0.15)');
+        }
+
+        // Update particles color to match theme
+        if (window.pJSDom && window.pJSDom[0]) {
+          window.pJSDom[0].pJS.particles.color.value = root.style.getPropertyValue('--secondary-color');
+          window.pJSDom[0].pJS.particles.line_linked.color = root.style.getPropertyValue('--secondary-color');
+          window.pJSDom[0].pJS.fn.particlesRefresh();
         }
       }
-    },
-    "retina_detect": true
-  });
-  
-  // Theme switcher functionality
-  const themeToggle = document.querySelector('.theme-toggle');
-  const themePanel = document.querySelector('.theme-panel');
-  const themeButtons = document.querySelectorAll('.theme-btn');
-  
-  themeToggle.addEventListener('click', () => {
-    themePanel.classList.toggle('open');
-  });
-  
-  themeButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const theme = btn.getAttribute('data-theme');
-      
-      // Remove active class from all buttons
-      themeButtons.forEach(b => b.classList.remove('active'));
-      
-      // Add active class to clicked button
-      btn.classList.add('active');
-      
-      // Apply theme
-      applyTheme(theme);
-      
-      // Save theme preference
-      localStorage.setItem('portfolio-theme', theme);
     });
-  });
-  
-  // Apply saved theme on load
-  const savedTheme = localStorage.getItem('portfolio-theme');
-  if (savedTheme) {
-    applyTheme(savedTheme);
-    document.querySelector(`.theme-${savedTheme}`).classList.add('active');
-  }
-  
-  function applyTheme(theme) {
-    const root = document.documentElement;
-    
-    // Reset dark theme
-    document.body.classList.remove('dark-theme');
-    
-    // Apply specific theme colors
-    switch(theme) {
-      case 'rose':
-        root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #f43f5e, #ec4899)');
-        root.style.setProperty('--primary-color', '#ec4899');
-        root.style.setProperty('--secondary-color', '#f43f5e');
-        root.style.setProperty('--accent-color', '#6366f1');
-        root.style.setProperty('--shadow-color', 'rgba(236, 72, 153, 0.15)');
-        break;
-      case 'emerald':
-        root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #10b981, #059669)');
-        root.style.setProperty('--primary-color', '#059669');
-        root.style.setProperty('--secondary-color', '#10b981');
-        root.style.setProperty('--accent-color', '#f59e0b');
-        root.style.setProperty('--shadow-color', 'rgba(5, 150, 105, 0.15)');
-        break;
-      case 'amber':
-        root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #f59e0b, #d97706)');
-        root.style.setProperty('--primary-color', '#d97706');
-        root.style.setProperty('--secondary-color', '#f59e0b');
-        root.style.setProperty('--accent-color', '#0ea5e9');
-        root.style.setProperty('--shadow-color', 'rgba(217, 119, 6, 0.15)');
-        break;
-      case 'sky':
-        root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #0ea5e9, #0284c7)');
-        root.style.setProperty('--primary-color', '#0284c7');
-        root.style.setProperty('--secondary-color', '#0ea5e9');
-        root.style.setProperty('--accent-color', '#8b5cf6');
-        root.style.setProperty('--shadow-color', 'rgba(2, 132, 199, 0.15)');
-        break;
-      case 'violet':
-        root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #8b5cf6, #7c3aed)');
-        root.style.setProperty('--primary-color', '#7c3aed');
-        root.style.setProperty('--secondary-color', '#8b5cf6');
-        root.style.setProperty('--accent-color', '#ec4899');
-        root.style.setProperty('--shadow-color', 'rgba(124, 58, 237, 0.15)');
-        break;
-      case 'slate':
-        root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #475569, #334155)');
-        root.style.setProperty('--primary-color', '#334155');
-        root.style.setProperty('--secondary-color', '#475569');
-        root.style.setProperty('--accent-color', '#f59e0b');
-        root.style.setProperty('--shadow-color', 'rgba(51, 65, 85, 0.15)');
-        break;
-      case 'dark':
-          document.body.classList.add('dark-theme');
-          root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #1e293b, #0f172a)');
-          root.style.setProperty('--primary-color', '#0f172a');
-          root.style.setProperty('--secondary-color', '#1e293b');
-          root.style.setProperty('--accent-color', '#f43f5e');
-          root.style.setProperty('--shadow-color', 'rgba(0, 0, 0, 0.3)');
-          break;
-      default: // indigo (default)
-        root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #6366f1, #4f46e5)');
-        root.style.setProperty('--primary-color', '#4f46e5');
-        root.style.setProperty('--secondary-color', '#6366f1');
-        root.style.setProperty('--accent-color', '#ec4899');
-        root.style.setProperty('--shadow-color', 'rgba(79, 70, 229, 0.15)');
-    }
-    
-    // Update particles color to match theme
-    if (window.pJSDom && window.pJSDom[0]) {
-      window.pJSDom[0].pJS.particles.color.value = root.style.getPropertyValue('--secondary-color');
-      window.pJSDom[0].pJS.particles.line_linked.color = root.style.getPropertyValue('--secondary-color');
-      window.pJSDom[0].pJS.fn.particlesRefresh();
-    }
-  }
-});
   </script>
 </body>
 </html>
