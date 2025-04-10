@@ -28,10 +28,6 @@
     body {
       font-family: var(--font-body);
       background-color: var(--bg-color);
-      background-image: 
-        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
-        radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, rgba(236, 72, 153, 0.05) 0%, transparent 50%);
       background-size: 60px 60px, 100% 100%, 100% 100%;
       background-attachment: fixed;
       color: var(--text-color);
@@ -584,24 +580,10 @@
       box-shadow: -5px 0 15px var(--shadow-color);
       position: relative;
       z-index: 2;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       transform-style: preserve-3d;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    
-    .theme-toggle:hover {
-      transform: translateX(-5px) rotateY(-10deg);
-    }
-    
-    .theme-toggle i {
-      transition: transform 0.5s ease;
-      transform-style: preserve-3d;
-    }
-    
-    .theme-panel.open .theme-toggle i {
-      transform: rotateY(180deg);
-    }
-    
     .theme-options {
       position: absolute;
       right: -250px;
@@ -618,6 +600,19 @@
       transform: rotateY(30deg);
       opacity: 0;
     }
+    .theme-toggle:hover {
+      transform: translateX(-5px) rotateY(-10deg);
+    }
+    
+    .theme-toggle i {
+      transition: transform 0.5s ease;
+      transform-style: preserve-3d;
+    }
+    
+    .theme-panel.open .theme-toggle i {
+      transform: rotateY(180deg);
+    }
+    
     
     .theme-panel.open .theme-options {
       right: 50px;
@@ -672,21 +667,14 @@
     }
     
     .theme-btn.active {
-      border: 2px solid white;
+      border: 7px solid rgb(48, 48, 48);
       transform: scale(1.05);
-    }
-    
-    .theme-btn.active::after {
-      content: '✓';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
-      font-size: 24px;
-      font-weight: bold;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    }
+}
+
+/* Remove tick mark */
+.theme-btn.active::after {
+  content: none;
+}
     
     /* Theme colors */
     .theme-indigo {
@@ -820,22 +808,27 @@
       border: 1px solid rgba(244, 63, 94, 0.3);
     }
     
-    /* Dark theme specific styles */
-    body.dark-theme {
-      --bg-color: #0f172a;
-      --text-color: #e2e8f0;
-      --card-bg: rgba(30, 41, 59, 0.95);
-      --shadow-color: rgba(0, 0, 0, 0.3);
-    }
-    
-    /* Make title visible in dark theme */
-    body.dark-theme .page-title {
-      color: #ffffff;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(99, 102, 241, 0.2);
-      -webkit-background-clip: initial;
-      background-clip: initial;
-      background: none;
-    }
+/* Dark theme specific styles */
+body.dark-theme {
+  --bg-color: #0f172a;
+  --text-color: #e2e8f0;
+  --card-bg: rgba(30, 41, 59, 0.95);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Make title visible in dark theme */
+body.dark-theme .page-title {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(99, 102, 241, 0.2);
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  background: none;
+}
+
+/* Make theme title visible in dark theme */
+body.dark-theme .theme-title {
+  color: #ffffff;
+}
     
     body.dark-theme .form-control:focus + .form-label,
     body.dark-theme .form-control:not(:placeholder-shown) + .form-label {
@@ -975,7 +968,7 @@
     <div class="container">
       <div class="page-header" data-aos="fade-up">
         <h1 class="page-title float-animation">Get In Touch</h1>
-        <p class="page-subtitle">Feel free to reach out for collaborations, opportunities, or just to say hello!</p>
+        <p class="page-subtitle">Feel free to reach out if you come across something that aligns with my background and interests</p>
       </div>
       
       <div class="contact-container">
