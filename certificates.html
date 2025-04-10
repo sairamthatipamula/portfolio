@@ -858,8 +858,8 @@ body.dark-theme .card-date {
         });
       });
       
-      // Initialize particles.js
-      particlesJS('particles-js', {
+    // Initialize particles.js
+    particlesJS('particles-js', {
         "particles": {
           "number": {
             "value": 80,
@@ -877,36 +877,50 @@ body.dark-theme .card-date {
               "width": 0,
               "color": "#000000"
             },
+            "polygon": {
+              "nb_sides": 5
+            }
           },
           "opacity": {
-            "value": 0.3,
+            "value": 0.5,
             "random": false,
             "anim": {
-              "enable": false
+              "enable": false,
+              "speed": 1,
+              "opacity_min": 0.1,
+              "sync": false
             }
           },
           "size": {
             "value": 3,
             "random": true,
             "anim": {
-              "enable": false
+              "enable": false,
+              "speed": 40,
+              "size_min": 0.1,
+              "sync": false
             }
           },
           "line_linked": {
             "enable": true,
             "distance": 150,
             "color": "#6366f1",
-            "opacity": 0.2,
+            "opacity": 0.4,
             "width": 1
           },
           "move": {
             "enable": true,
-            "speed": 2,
+            "speed": 6,
             "direction": "none",
             "random": false,
             "straight": false,
             "out_mode": "out",
             "bounce": false,
+            "attract": {
+              "enable": false,
+              "rotateX": 600,
+              "rotateY": 1200
+            }
           }
         },
         "interactivity": {
@@ -914,7 +928,7 @@ body.dark-theme .card-date {
           "events": {
             "onhover": {
               "enable": true,
-              "mode": "grab"
+              "mode": "repulse"
             },
             "onclick": {
               "enable": true,
@@ -924,133 +938,138 @@ body.dark-theme .card-date {
           },
           "modes": {
             "grab": {
-              "distance": 140,
+              "distance": 400,
               "line_linked": {
-                "opacity": 0.5
+                "opacity": 1
               }
+            },
+            "bubble": {
+              "distance": 400,
+              "size": 40,
+              "duration": 2,
+              "opacity": 8,
+              "speed": 3
+            },
+            "repulse": {
+              "distance": 200,
+              "duration": 0.4
             },
             "push": {
               "particles_nb": 4
+            },
+            "remove": {
+              "particles_nb": 2
             }
           }
         },
         "retina_detect": true
       });
-      
+  
       // Theme switcher functionality
-      const root = document.documentElement;
       const themeToggle = document.querySelector('.theme-toggle');
       const themePanel = document.querySelector('.theme-panel');
       const themeButtons = document.querySelectorAll('.theme-btn');
-      
-      // Toggle theme panel
+  
       themeToggle.addEventListener('click', () => {
         themePanel.classList.toggle('open');
       });
-      
-      // Theme selection
+  
       themeButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', () => {
+          const theme = btn.getAttribute('data-theme');
+  
           // Remove active class from all buttons
           themeButtons.forEach(b => b.classList.remove('active'));
-          
+  
           // Add active class to clicked button
           btn.classList.add('active');
-          
-          const theme = btn.getAttribute('data-theme');
-          
-          // Save theme preference
-          localStorage.setItem('portfolio-theme', theme);
-          
+  
           // Apply theme
           applyTheme(theme);
+  
+          // Save theme preference
+          localStorage.setItem('portfolio-theme', theme);
         });
       });
-      
+  
       // Apply saved theme on load
       const savedTheme = localStorage.getItem('portfolio-theme');
       if (savedTheme) {
         applyTheme(savedTheme);
         document.querySelector(`.theme-${savedTheme}`).classList.add('active');
       }
-      
+  
       function applyTheme(theme) {
+        const root = document.documentElement;
+  
         // Reset dark theme
         document.body.classList.remove('dark-theme');
-        
+  
         // Apply specific theme colors
         switch(theme) {
-          case 'indigo':
-            root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #6366f1, #4f46e5)');
-            root.style.setProperty('--primary-color', '#6366f1');
-            root.style.setProperty('--primary-color-rgb', '99, 102, 241');
-            root.style.setProperty('--secondary-color', '#4f46e5');
-            root.style.setProperty('--accent-color', '#f43f5e');
-            root.style.setProperty('--shadow-color', 'rgba(99, 102, 241, 0.2)');
-            break;
           case 'rose':
             root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #f43f5e, #ec4899)');
-            root.style.setProperty('--primary-color', '#f43f5e');
-            root.style.setProperty('--primary-color-rgb', '244, 63, 94');
-            root.style.setProperty('--secondary-color', '#ec4899');
+            root.style.setProperty('--primary-color', '#ec4899');
+            root.style.setProperty('--secondary-color', '#f43f5e');
             root.style.setProperty('--accent-color', '#6366f1');
-            root.style.setProperty('--shadow-color', 'rgba(244, 63, 94, 0.2)');
+            root.style.setProperty('--shadow-color', 'rgba(236, 72, 153, 0.15)');
             break;
           case 'emerald':
             root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #10b981, #059669)');
-            root.style.setProperty('--primary-color', '#10b981');
-            root.style.setProperty('--primary-color-rgb', '16, 185, 129');
-            root.style.setProperty('--secondary-color', '#059669');
-            root.style.setProperty('--accent-color', '#f43f5e');
-            root.style.setProperty('--shadow-color', 'rgba(16, 185, 129, 0.2)');
+            root.style.setProperty('--primary-color', '#059669');
+            root.style.setProperty('--secondary-color', '#10b981');
+            root.style.setProperty('--accent-color', '#f59e0b');
+            root.style.setProperty('--shadow-color', 'rgba(5, 150, 105, 0.15)');
             break;
           case 'amber':
             root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #f59e0b, #d97706)');
-            root.style.setProperty('--primary-color', '#f59e0b');
-            root.style.setProperty('--primary-color-rgb', '245, 158, 11');
-            root.style.setProperty('--secondary-color', '#d97706');
-            root.style.setProperty('--accent-color', '#6366f1');
-            root.style.setProperty('--shadow-color', 'rgba(245, 158, 11, 0.2)');
+            root.style.setProperty('--primary-color', '#d97706');
+            root.style.setProperty('--secondary-color', '#f59e0b');
+            root.style.setProperty('--accent-color', '#0ea5e9');
+            root.style.setProperty('--shadow-color', 'rgba(217, 119, 6, 0.15)');
             break;
           case 'sky':
             root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #0ea5e9, #0284c7)');
-            root.style.setProperty('--primary-color', '#0ea5e9');
-            root.style.setProperty('--primary-color-rgb', '14, 165, 233');
-            root.style.setProperty('--secondary-color', '#0284c7');
-            root.style.setProperty('--accent-color', '#f43f5e');
-            root.style.setProperty('--shadow-color', 'rgba(14, 165, 233, 0.2)');
+            root.style.setProperty('--primary-color', '#0284c7');
+            root.style.setProperty('--secondary-color', '#0ea5e9');
+            root.style.setProperty('--accent-color', '#8b5cf6');
+            root.style.setProperty('--shadow-color', 'rgba(2, 132, 199, 0.15)');
             break;
           case 'violet':
             root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #8b5cf6, #7c3aed)');
-            root.style.setProperty('--primary-color', '#8b5cf6');
-            root.style.setProperty('--primary-color-rgb', '139, 92, 246');
-            root.style.setProperty('--secondary-color', '#7c3aed');
-            root.style.setProperty('--accent-color', '#f43f5e');
-            root.style.setProperty('--shadow-color', 'rgba(139, 92, 246, 0.2)');
+            root.style.setProperty('--primary-color', '#7c3aed');
+            root.style.setProperty('--secondary-color', '#8b5cf6');
+            root.style.setProperty('--accent-color', '#ec4899');
+            root.style.setProperty('--shadow-color', 'rgba(124, 58, 237, 0.15)');
             break;
           case 'slate':
             root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #475569, #334155)');
-            root.style.setProperty('--primary-color', '#475569');
-            root.style.setProperty('--primary-color-rgb', '71, 85, 105');
-            root.style.setProperty('--secondary-color', '#334155');
-            root.style.setProperty('--accent-color', '#f43f5e');
-            root.style.setProperty('--shadow-color', 'rgba(71, 85, 105, 0.2)');
+            root.style.setProperty('--primary-color', '#334155');
+            root.style.setProperty('--secondary-color', '#475569');
+            root.style.setProperty('--accent-color', '#f59e0b');
+            root.style.setProperty('--shadow-color', 'rgba(51, 65, 85, 0.15)');
             break;
           case 'dark':
             document.body.classList.add('dark-theme');
             root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #1e293b, #0f172a)');
-            root.style.setProperty('--primary-color', '#1e293b');
-            root.style.setProperty('--primary-color-rgb', '30, 41, 59');
-            root.style.setProperty('--secondary-color', '#0f172a');
+            root.style.setProperty('--primary-color', '#0f172a');
+            root.style.setProperty('--secondary-color', '#1e293b');
             root.style.setProperty('--accent-color', '#f43f5e');
             root.style.setProperty('--shadow-color', 'rgba(0, 0, 0, 0.3)');
             break;
+          default: // indigo (default)
+            root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #6366f1, #4f46e5)');
+            root.style.setProperty('--primary-color', '#4f46e5');
+            root.style.setProperty('--secondary-color', '#6366f1');
+            root.style.setProperty('--accent-color', '#ec4899');
+            root.style.setProperty('--shadow-color', 'rgba(79, 70, 229, 0.15)');
         }
-        
-        // Update particles color
+  
+        // Update particles color to match theme
+        const particlesColor = theme === 'dark' ? '#ffffff' : root.style.getPropertyValue('--secondary-color');
         if (window.pJSDom && window.pJSDom[0]) {
-          window.pJSDom[0].pJS.particles.color.value = getComputedStyle(document.documentElement).getPropertyValue('--primary-color');
-          window.pJSDom[0].pJS.particles.line_linked.color = getComputedStyle(document.documentElement).getPropertyValue('--primary-color');
+          window.pJSDom[0].pJS.particles.color.value = particlesColor;
+          window.pJSDom[0].pJS.particles.line_linked.color = particlesColor;
           window.pJSDom[0].pJS.fn.particlesRefresh();
         }
       }
