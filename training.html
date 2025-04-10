@@ -3,186 +3,255 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Professional Development Journey</title>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="animations.css">
+  <title>Training - Sairam Thatipamula</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <!-- Add Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Raleway', sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      color: #2c3e50;
+    /* Theme color variables */
+    :root {
+      --primary-gradient: linear-gradient(135deg, #6366f1, #4f46e5);
+      --primary-color: #4f46e5;
+      --secondary-color: #6366f1;
+      --text-color: #1e293b;
+      --bg-color: #f8fafc;
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --shadow-color: rgba(79, 70, 229, 0.15);
+      --accent-color: #ec4899;
+      --border-radius: 20px;
+      --font-heading: 'Abril Fatface', cursive;
+      --font-body: 'Montserrat', sans-serif;
+      --transition-smooth: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
     }
     
-    .page-header {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-    
-    .page-title {
-      font-family: 'Merriweather', serif;
-      font-size: 3.5rem;
-      font-weight: 900;
-      color: #2c3e50;
-      margin-bottom: 15px;
-      position: relative;
-      display: inline-block;
-    }
-    
-    .page-title::after {
-      content: '';
-      position: absolute;
-      width: 70%;
-      height: 5px;
-      background: linear-gradient(90deg, #34495e, #2c3e50);
-      bottom: -15px;
-      left: 15%;
-      border-radius: 5px;
-    }
-    
-    .page-subtitle {
-      font-size: 1.2rem;
-      font-weight: 300;
-      color: #7f8c8d;
-      max-width: 700px;
-      margin: 30px auto 0;
-    }
-    
-    .training-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
-    }
-    
-    .training-card {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-      position: relative;
-      z-index: 1;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .training-card:hover {
-      transform: translateY(-15px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    }
-    
-    .card-header {
-      background: linear-gradient(135deg, #34495e, #2c3e50);
-      padding: 25px;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .card-header::before {
-      content: '';
-      position: absolute;
-      width: 150px;
-      height: 150px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      top: -75px;
-      right: -75px;
-    }
-    
-    .card-header::after {
-      content: '';
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 50%;
-      bottom: -50px;
-      left: -50px;
-    }
-    
-    .card-icon {
-      font-size: 2.5rem;
-      color: white;
-      margin-bottom: 15px;
-      display: inline-block;
-      position: relative;
-      z-index: 2;
-    }
-    
-    .card-title {
-      color: white;
-      font-size: 1.5rem;
-      font-weight: 700;
+    * {
       margin: 0;
-      position: relative;
-      z-index: 2;
+      padding: 0;
+      box-sizing: border-box;
     }
     
-    .card-body {
-      padding: 25px;
-      flex-grow: 1;
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-color);
+      background-size: 60px 60px, 100% 100%, 100% 100%;
+      background-attachment: fixed;
+      color: var(--text-color);
+      transition: var(--transition-smooth);
+      line-height: 1.8;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
+      overflow-x: hidden;
     }
     
-    .card-text {
-      font-size: 1rem;
-      line-height: 1.7;
-      color: #34495e;
-      margin-bottom: 20px;
-      flex-grow: 1;
-    }
-    
-    .card-footer {
-      padding: 0 25px 25px;
-      display: none; /* Hide the footer containing the certificate buttons */
-    }
-    
-    .card-skills {
+    /* Enhanced theme switcher */
+    .theme-panel {
+      position: fixed;
+      top: 20%;
+      right: 0;
+      transform: translateY(-50%);
+      z-index: 1000;
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 0; /* Remove bottom margin since footer is hidden */
+      flex-direction: column;
+      transition: var(--transition-smooth);
+      perspective: 1000px;
     }
     
-    .skill-tag {
-      background: rgba(52, 73, 94, 0.1);
-      color: #34495e;
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-    
-    .card-link {
-      display: inline-block;
-      padding: 10px 20px;
-      background: linear-gradient(135deg, #34495e, #2c3e50);
+    .theme-toggle {
+      background: var(--primary-gradient);
       color: white;
-      text-decoration: none;
-      border-radius: 30px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(52, 73, 94, 0.3);
+      width: 50px;
+      height: 50px;
+      border-radius: 12px 0 0 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: -5px 0 15px var(--shadow-color);
+      position: relative;
+      z-index: 2;
+      font-size: 1.5rem;
+      transform-style: preserve-3d;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .theme-options {
+      position: absolute;
+      right: -250px;
+      top: 0;
+      background: var(--card-bg);
+      border-radius: 12px 0 0 12px;
+      padding: 20px;
+      box-shadow: -5px 0 20px var(--shadow-color);
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      width: 200px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transform-style: preserve-3d;
+      transform: rotateY(30deg);
+      opacity: 0;
     }
     
-    .card-link:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(52, 73, 94, 0.4);
-      text-decoration: none;
+    .theme-toggle:hover {
+      transform: translateX(-5px) rotateY(-10deg);
     }
     
-    /* Custom navigation */
+    .theme-toggle i {
+      transition: transform 0.5s ease;
+      transform-style: preserve-3d;
+    }
+    
+    .theme-panel.open .theme-toggle i {
+      transform: rotateY(180deg);
+    }
+    
+    
+    .theme-panel.open .theme-options {
+      right: 50px;
+      transform: rotateY(0deg);
+      opacity: 1;
+    }
+    
+    .theme-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+      text-align: center;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .theme-title::after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 3px;
+      background: var(--primary-gradient);
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 3px;
+    }
+    
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+    
+    .theme-btn {
+      width: 100%;
+      aspect-ratio: 1/1;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 5px 15px var(--shadow-color);
+      border: 2px solid transparent;
+      transform-style: preserve-3d;
+    }
+    
+    .theme-btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 8px 20px var(--shadow-color);
+    }
+    
+.theme-btn.active {
+  border: 7px solid rgb(48, 48, 48);
+  transform: scale(1.05);
+}
+
+/* Remove tick mark */
+.theme-btn.active::after {
+  content: none;
+}
+    
+    /* Theme colors */
+    .theme-indigo {
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+    }
+    
+    .theme-rose {
+      background: linear-gradient(135deg, #f43f5e, #ec4899);
+    }
+    
+    .theme-emerald {
+      background: linear-gradient(135deg, #10b981, #059669);
+    }
+    
+    .theme-amber {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+    }
+    
+    .theme-sky {
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+    }
+    
+    .theme-violet {
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    }
+    
+    .theme-slate {
+      background: linear-gradient(135deg, #475569, #334155);
+    }
+    
+    .theme-dark {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+    }
+  /* Dark theme specific styles */
+body.dark-theme {
+  --bg-color: #0f172a;
+  --text-color: #e2e8f0;
+  --card-bg: rgba(30, 41, 59, 0.95);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Make title visible in dark theme */
+body.dark-theme .page-title {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(99, 102, 241, 0.2);
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  background: none;
+}
+
+/* Make theme title visible in dark theme */
+body.dark-theme .theme-title {
+  color: #ffffff;
+}
+    .particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    header {
+      padding: 30px 0;
+    }
+    
     .main-nav {
-      background: rgba(255, 255, 255, 0.9);
+      background: var(--card-bg);
       border-radius: 50px;
-      padding: 10px 20px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      margin-bottom: 40px;
+      padding: 8px;
+      box-shadow: 0 10px 30px var(--shadow-color), 
+                  0 0 0 1px rgba(255, 255, 255, 0.3) inset;
     }
     
     .main-nav ul {
@@ -190,6 +259,9 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
     }
     
     .main-nav ul li {
@@ -197,67 +269,285 @@
     }
     
     .main-nav ul li a {
-      padding: 10px 20px;
-      color: #34495e;
+      padding: 8px 15px;
+      color: var(--text-color);
       text-decoration: none;
       font-weight: 500;
       border-radius: 25px;
       transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
     }
     
-    .main-nav ul li a:hover, .main-nav ul li a.active {
-      background: linear-gradient(135deg, #34495e, #2c3e50);
-      color: white;
-      box-shadow: 0 4px 10px rgba(52, 73, 94, 0.3);
-    }
-    
-    /* Custom footer */
-    footer {
-      background: linear-gradient(135deg, #34495e, #2c3e50);
-      color: white;
-      padding: 40px 0;
-      margin-top: 100px;
-    }
-    
-    .footer-content {
-      text-align: center;
-    }
-    
-    .footer-text {
+    .main-nav ul li a i {
       font-size: 1rem;
       opacity: 0.8;
     }
     
-    /* Animations */
-    @keyframes float {
-      0% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-      100% {
-        transform: translateY(0px);
-      }
+    .main-nav ul li a.active,
+    .main-nav ul li a:hover {
+      color: white;
+      background: var(--primary-gradient);
     }
     
-    .float-animation {
-      animation: float 4s ease-in-out infinite;
+    /* Animated page header */
+    .page-header {
+      text-align: center;
+      margin: 80px 0 60px;
+      position: relative;
+    }
+    
+    .page-title {
+      font-family: var(--font-heading);
+      font-size: 5rem;
+      font-weight: 400;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 25px;
+      position: relative;
+      display: inline-block;
+      letter-spacing: 2px;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+    
+    .page-title::after {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 5px;
+      background: var(--primary-gradient);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 5px;
+      box-shadow: 0 3px 10px var(--shadow-color);
+    }
+    
+    .page-subtitle {
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: var(--text-color);
+      max-width: 700px;
+      margin: 30px auto 0;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      opacity: 0.8;
+    }
+    .training-tags {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.training-tags span {
+  background: var(--primary-gradient);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  box-shadow: 0 5px 15px var(--shadow-color);
+  transition: background 0.3s ease;
+}
+
+.training-tags span:hover {
+  background: var(--secondary-color);
+}
+    .training-timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto 80px;
+      padding: 20px 0;
+    }
+    
+    .training-item {
+      position: relative;
+      margin-bottom: 60px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .training-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .training-content {
+      width: 45%;
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 30px;
+      box-shadow: 0 15px 30px var(--shadow-color),
+                  0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+      position: relative;
+      transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      transform-style: preserve-3d;
+      opacity: 0;
+      transform: translateY(30px);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .training-content.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .training-content:hover {
+      transform: translateY(-10px) rotateX(5deg) rotateY(-5deg);
+      box-shadow: 0 25px 50px var(--shadow-color),
+                  0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+    }
+    
+    .training-title {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: var(--primary-color);
+    }
+    
+    .training-provider {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: var(--text-color);
+    }
+    
+    .training-description {
+      margin-top: 15px;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-color);
+      opacity: 0.9;
+    }
+    
+    .training-icon {
+      position: absolute;
+      top: 20px;
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      opacity: 0.2;
+      transition: all 0.3s ease;
+    }
+    
+    .training-item:nth-child(odd) .training-icon {
+      left: 20px;
+    }
+    
+    .training-item:nth-child(even) .training-icon {
+      right: 20px;
+    }
+    
+    .training-content:hover .training-icon {
+      transform: scale(1.2) rotate(10deg);
+      opacity: 0.3;
+    }
+
+  
+  /* Make title visible in dark theme */
+  body.dark-theme .page-title,
+  body.dark-theme .training-title,
+  body.dark-theme .training-provider,
+  body.dark-theme .training-description,
+  body.dark-theme .footer-text {
+    color: #e2e8f0;
+  }
+  
+  body.dark-theme .training-tags span {
+    background: var(--secondary-color);
+    color: #ffffff;
+  }
+    /* Modern footer styles */
+    footer {
+      background: var(--primary-gradient);
+      color: white;
+      padding: 50px 0;
+      margin-top: auto;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    footer::before {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      top: -100px;
+      right: -50px;
+      filter: blur(20px);
+    }
+    
+    footer::after {
+      content: '';
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      bottom: -75px;
+      left: 10%;
+      filter: blur(20px);
+    }
+    
+    .footer-content {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .footer-text {
+      font-size: 1.1rem;
+      opacity: 0.8;
+      letter-spacing: 1px;
     }
   </style>
 </head>
 <body>
+  <!-- Particle background -->
+  <div id="particles-js" class="particles-js"></div>
+
+  <!-- Theme Switcher -->
+  <div class="theme-panel">
+    <div class="theme-toggle">
+      <i class="fas fa-palette"></i>
+    </div>
+    <div class="theme-options">
+      <div class="theme-title">Choose Theme</div>
+      <div class="theme-grid">
+        <div class="theme-btn theme-indigo active" data-theme="indigo" title="Indigo Theme"></div>
+        <div class="theme-btn theme-rose" data-theme="rose" title="Rose Theme"></div>
+        <div class="theme-btn theme-emerald" data-theme="emerald" title="Emerald Theme"></div>
+        <div class="theme-btn theme-amber" data-theme="amber" title="Amber Theme"></div>
+        <div class="theme-btn theme-sky" data-theme="sky" title="Sky Theme"></div>
+        <div class="theme-btn theme-violet" data-theme="violet" title="Violet Theme"></div>
+        <div class="theme-btn theme-slate" data-theme="slate" title="Slate Theme"></div>
+        <div class="theme-btn theme-dark" data-theme="dark" title="Dark Theme"></div>
+      </div>
+    </div>
+  </div>
+
   <header>
     <div class="container">
       <nav class="main-nav">
         <ul>
-          <li><a href="index.html" class="animate__animated animate__fadeIn">About Me</a></li>
-          <li><a href="projects.html" class="animate__animated animate__fadeIn">Projects</a></li>
-          <li><a href="certificates.html" class="animate__animated animate__fadeIn">Certificates</a></li>
-          <li><a href="skills.html" class="animate__animated animate__fadeIn">Technical Skills</a></li>
-          <li><a href="education.html" class="animate__animated animate__fadeIn">Education</a></li>
-          <li><a href="training.html" class="animate__animated animate__fadeIn active">Online Training</a></li>
-          <li><a href="contact.html" class="animate__animated animate__fadeIn">Contact</a></li>
+          <li><a href="index.html"><i class="fas fa-user-circle"></i> About Me</a></li>
+          <li><a href="projects.html"><i class="fas fa-laptop-code"></i> Projects</a></li>
+          <li><a href="certificates.html"><i class="fas fa-award"></i> Certificates</a></li>
+          <li><a href="skills.html"><i class="fas fa-brain"></i> Technical Skills</a></li>
+          <li><a href="education.html"><i class="fas fa-graduation-cap"></i> Education</a></li>
+          <li><a href="training.html" class="active"><i class="fas fa-chalkboard-teacher"></i> Online Training</a></li>
+          <li><a href="contact.html"><i class="fas fa-paper-plane"></i> Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -265,128 +555,94 @@
 
   <section id="training" class="training">
     <div class="container">
-      <div class="page-header animate__animated animate__fadeIn">
-        <h1 class="page-title">Professional Development</h1>
+      <div class="page-header" data-aos="fade-up">
+        <h1 class="page-title float-animation">Online Learnings</h1>
         <p class="page-subtitle">Continuous learning is the key to staying relevant in the ever-evolving tech landscape. Here's a glimpse of my learning journey through various online platforms and courses.</p>
       </div>
       
-      <div class="training-grid">
-        <!-- Python Training -->
-        <div class="training-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
-          <div class="card-header">
-            <i class="fab fa-python card-icon float-animation"></i>
-            <h3 class="card-title">Programming with Patashala</h3>
-          </div>
-          <div class="card-body">
-            <p class="card-text">Completed specialized training in Python programming, covering core concepts, data structures, and algorithms. Gained hands-on experience in building efficient and scalable Python applications.</p>
-            <div class="card-skills">
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">Data Structures</span>
-              <span class="skill-tag">Algorithms</span>
+      <div class="training-timeline">
+        <!-- Training Item 1 -->
+        <div class="training-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="training-content">
+            <i class="training-icon fas fa-laptop-code"></i>
+            <h3 class="training-title">Programming with Patashala</h3>
+            <p class="training-description">
+              Completed specialized training in Python programming, covering core concepts, data structures, and algorithms. Gained hands-on experience in building efficient and scalable Python applications.
+            </p>
+            <div class="training-tags">
+              <span>Python</span>
+              <span>Data Structures</span>
+              <span>Algorithms</span>
             </div>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="card-link">View Certificate</a>
           </div>
         </div>
         
-        <!-- Machine Learning -->
-        <div class="training-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
-          <div class="card-header">
-            <i class="fas fa-brain card-icon float-animation"></i>
-            <h3 class="card-title">Coursera - Machine Learning</h3>
-          </div>
-          <div class="card-body">
-            <p class="card-text">Completed a comprehensive course on machine learning, covering supervised and unsupervised learning, neural networks, and deep learning. Applied concepts to real-world projects using Python and TensorFlow.</p>
-            <div class="card-skills">
-              <span class="skill-tag">Machine Learning</span>
-              <span class="skill-tag">Neural Networks</span>
-              <span class="skill-tag">TensorFlow</span>
+        <!-- Training Item 2 -->
+        <div class="training-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="training-content">
+            <i class="training-icon fas fa-brain"></i>
+            <h3 class="training-title">Coursera - Machine Learning</h3>
+            <p class="training-description">
+              Completed a comprehensive course on machine learning, covering supervised and unsupervised learning, neural networks, and deep learning. Applied concepts in real-world projects using Python and TensorFlow.
+            </p>
+            <div class="training-tags">
+              <span>Machine Learning</span>
+              <span>Neural Networks</span>
+              <span>TensorFlow</span>
             </div>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="card-link">View Certificate</a>
           </div>
         </div>
         
-        <!-- Web Development -->
-        <div class="training-card animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
-          <div class="card-header">
-            <i class="fas fa-code card-icon float-animation"></i>
-            <h3 class="card-title">Full-Stack Web Development</h3>
-          </div>
-          <div class="card-body">
-            <p class="card-text">Learned frontend and backend development using HTML, CSS, JavaScript, React, and Node.js. Built responsive and dynamic web applications with a focus on user experience and performance optimization.</p>
-            <div class="card-skills">
-              <span class="skill-tag">HTML/CSS</span>
-              <span class="skill-tag">JavaScript</span>
-              <span class="skill-tag">React</span>
-              <span class="skill-tag">Node.js</span>
+        <!-- Training Item 3 -->
+        <div class="training-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="training-content">
+            <i class="training-icon fas fa-code"></i>
+            <h3 class="training-title">Full-Stack Web Development</h3>
+            <p class="training-description">
+              Learned frontend and backend development using HTML, CSS, JavaScript, React, and Node.js. Built responsive and dynamic web applications with a focus on user experience and performance optimization.
+            </p>
+            <div class="training-tags">
+              <span>HTML/CSS</span>
+              <span>JavaScript</span>
+              <span>React</span>
+              <span>Node.js</span>
             </div>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="card-link">View Certificate</a>
           </div>
         </div>
         
-        <!-- Data Science -->
-        <div class="training-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
-          <div class="card-header">
-            <i class="fas fa-chart-bar card-icon float-animation"></i>
-            <h3 class="card-title">Data Science with Python</h3>
-          </div>
-          <div class="card-body">
-            <p class="card-text">Explored data analysis, visualization, and machine learning using Python libraries like Pandas, NumPy, Matplotlib, and Scikit-learn. Worked on real-world datasets to derive actionable insights.</p>
-            <div class="card-skills">
-              <span class="skill-tag">Pandas</span>
-              <span class="skill-tag">NumPy</span>
-              <span class="skill-tag">Matplotlib</span>
-              <span class="skill-tag">Scikit-learn</span>
+        <!-- Training Item 4 -->
+        <div class="training-item" data-aos="fade-up" data-aos-delay="400">
+          <div class="training-content">
+            <i class="training-icon fas fa-database"></i>
+            <h3 class="training-title">Data Science with Python</h3>
+            <p class="training-description">
+              Explored data analysis, visualization, and machine learning using Python libraries like Pandas, NumPy, Matplotlib, and Scikit-learn. Worked on real-world datasets to derive actionable insights.
+            </p>
+            <div class="training-tags">
+              <span>Pandas</span>
+              <span>NumPy</span>
+              <span>Matplotlib</span>
+              <span>Scikit-learn</span>
             </div>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="card-link">View Certificate</a>
           </div>
         </div>
         
-        <!-- NLP -->
-        <div class="training-card animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
-          <div class="card-header">
-            <i class="fas fa-comment-alt card-icon float-animation"></i>
-            <h3 class="card-title">Natural Language Processing</h3>
-          </div>
-          <div class="card-body">
-            <p class="card-text">Studied advanced NLP techniques, including tokenization, sentiment analysis, and sequence-to-sequence models. Built chatbots and language models using TensorFlow and PyTorch.</p>
-            <div class="card-skills">
-              <span class="skill-tag">NLP</span>
-              <span class="skill-tag">Sentiment Analysis</span>
-              <span class="skill-tag">PyTorch</span>
-              <span class="skill-tag">Chatbots</span>
+        <!-- Training Item 5 -->
+        <div class="training-item" data-aos="fade-up" data-aos-delay="500">
+          <div class="training-content">
+            <i class="training-icon fas fa-comments"></i>
+            <h3 class="training-title">Natural Language Processing</h3>
+            <p class="training-description">
+              Studied advanced NLP techniques, including tokenization, sentiment analysis, and sequence-to-sequence models. Built text analysis applications using Python and PyTorch.
+            </p>
+            <div class="training-tags">
+              <span>NLP</span>
+              <span>Sentiment Analysis</span>
+              <span>Python</span>
+              <span>PyTorch</span>
             </div>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="card-link">View Certificate</a>
           </div>
         </div>
-        
-        <!-- AWS -->
-        <div class="training-card animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
-          <div class="card-header">
-            <i class="fab fa-aws card-icon float-animation"></i>
-            <h3 class="card-title">Cloud Computing with AWS</h3>
-          </div>
-          <div class="card-body">
-            <p class="card-text">Gained expertise in cloud infrastructure, deployment, and management using Amazon Web Services (AWS). Learned to build scalable and secure cloud-based applications.</p>
-            <div class="card-skills">
-              <span class="skill-tag">AWS</span>
-              <span class="skill-tag">Cloud Computing</span>
-              <span class="skill-tag">DevOps</span>
-              <span class="skill-tag">Serverless</span>
-            </div>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="card-link">View Certificate</a>
-          </div>
         </div>
       </div>
     </div>
@@ -400,28 +656,335 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
-  <script>
-    // Add hover effect to cards
-    document.querySelectorAll('.training-card').forEach(card => {
-      card.addEventListener('mouseenter', function() {
-        this.querySelector('.card-icon').style.transform = 'scale(1.2)';
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize AOS with better settings
+  AOS.init({
+    duration: 1000,
+    easing: 'ease-out-cubic',
+    once: false,
+    mirror: true,
+    anchorPlacement: 'top-bottom'
+  });
+  
+  // Add animation to training items
+  document.querySelectorAll('.training-content').forEach(el => {
+    el.classList.add('visible');
+  });
+  
+  // 3D tilt effect for training cards
+  document.querySelectorAll('.training-content').forEach(card => {
+    card.addEventListener('mousemove', function(e) {
+      const cardRect = this.getBoundingClientRect();
+      const cardCenterX = cardRect.left + cardRect.width / 2;
+      const cardCenterY = cardRect.top + cardRect.height / 2;
+      
+      const maxAngle = 5; // reduced from default
+      const percentX = (e.clientX - cardCenterX) / (cardRect.width / 2);
+      const percentY = (e.clientY - cardCenterY) / (cardRect.height / 2);
+      const angleX = Math.max(Math.min(percentY * maxAngle, maxAngle), -maxAngle);
+      const angleY = Math.max(Math.min(-percentX * maxAngle, maxAngle), -maxAngle);
+      
+      this.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-5px)`;
+      
+      const icon = this.querySelector('.training-icon');
+      if (icon) {
+        icon.style.transform = `translateX(${angleY * 2}px) translateY(${-angleX * 2}px)`;
+      }
+    });
+    
+    card.addEventListener('mouseleave', function() {
+      this.style.transition = 'transform 0.5s ease-out';
+      this.style.transform = '';
+      
+      const icon = this.querySelector('.training-icon');
+      if (icon) {
+        icon.style.transition = 'transform 0.5s ease-out';
+        icon.style.transform = '';
+      }
+      
+      setTimeout(() => {
+        this.style.transition = '';
+        if (icon) icon.style.transition = '';
+      }, 500);
+    });
+  });
+});
+    
+    // Initialize particles.js
+    particlesJS('particles-js', {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#6366f1"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": false,
+          "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": {
+            "enable": false,
+            "speed": 40,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#6366f1",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": false,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 140,
+            "line_linked": {
+              "opacity": 1
+            }
+          },
+          "bubble": {
+            "distance": 400,
+            "size": 40,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+          },
+          "repulse": {
+            "distance": 200,
+            "duration": 0.4
+          },
+          "push": {
+            "particles_nb": 4
+          },
+          "remove": {
+            "particles_nb": 2
+          }
+        }
+      },
+      "retina_detect": true
+    });
+    
+    // Add animation to training items
+    document.querySelectorAll('.training-content').forEach(el => {
+      el.classList.add('visible');
+    });
+    
+    // 3D tilt effect for training cards
+    document.querySelectorAll('.training-content').forEach(card => {
+      card.addEventListener('mousemove', function(e) {
+        const cardRect = this.getBoundingClientRect();
+        const cardCenterX = cardRect.left + cardRect.width / 2;
+        const cardCenterY = cardRect.top + cardRect.height / 2;
+        
+        // Limit the rotation angle to a smaller range
+        const maxAngle = 5; // reduced from default
+        const percentX = (e.clientX - cardCenterX) / (cardRect.width / 2);
+        const percentY = (e.clientY - cardCenterY) / (cardRect.height / 2);
+        const angleX = Math.max(Math.min(percentY * maxAngle, maxAngle), -maxAngle);
+        const angleY = Math.max(Math.min(-percentX * maxAngle, maxAngle), -maxAngle);
+        
+        this.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-5px)`;
+        
+        // Add depth to icons
+        const icon = this.querySelector('.training-icon');
+        if (icon) {
+          icon.style.transform = `translateX(${angleY * 2}px) translateY(${-angleX * 2}px)`;
+        }
       });
       
       card.addEventListener('mouseleave', function() {
-        this.querySelector('.card-icon').style.transform = 'scale(1)';
+        // Smooth transition back to original position
+        this.style.transition = 'transform 0.5s ease-out';
+        this.style.transform = '';
+        
+        const icon = this.querySelector('.training-icon');
+        if (icon) {
+          icon.style.transition = 'transform 0.5s ease-out';
+          icon.style.transform = '';
+        }
+        
+        // Remove the transition after it completes to allow smooth mousemove again
+        setTimeout(() => {
+          this.style.transition = '';
+          if (icon) icon.style.transition = '';
+        }, 500);
       });
     });
     
-    // Highlight active nav item
-    document.addEventListener('DOMContentLoaded', function() {
-      const currentPage = window.location.pathname.split('/').pop();
-      document.querySelectorAll('.main-nav a').forEach(link => {
-        if (link.getAttribute('href') === currentPage) {
-          link.classList.add('active');
-        }
+    // Theme switcher functionality
+    const root = document.documentElement;
+    const themeToggle = document.querySelector('.theme-toggle');
+    const themePanel = document.querySelector('.theme-panel');
+    const themeButtons = document.querySelectorAll('.theme-btn');
+    
+    // Toggle theme panel
+    themeToggle.addEventListener('click', () => {
+      themePanel.classList.toggle('open');
+    });
+    
+    // Theme selection
+    themeButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        // Remove active class from all buttons
+        themeButtons.forEach(b => b.classList.remove('active'));
+        
+        // Add active class to clicked button
+        btn.classList.add('active');
+        
+        const theme = btn.getAttribute('data-theme');
+        
+        // Save theme preference
+        localStorage.setItem('portfolio-theme', theme);
+        
+        // Apply theme
+        applyTheme(theme);
       });
     });
-  </script>
+    
+    // Apply saved theme on load
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    if (savedTheme) {
+      applyTheme(savedTheme);
+      document.querySelector(`.theme-${savedTheme}`).classList.add('active');
+    }
+    
+    function applyTheme(theme) {
+      // Reset dark theme
+      document.body.classList.remove('dark-theme');
+      
+      // Apply specific theme colors
+      switch(theme) {
+        case 'indigo':
+          root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #6366f1, #4f46e5)');
+          root.style.setProperty('--primary-color', '#6366f1');
+          root.style.setProperty('--primary-color-rgb', '99, 102, 241');
+          root.style.setProperty('--secondary-color', '#4f46e5');
+          root.style.setProperty('--accent-color', '#f43f5e');
+          root.style.setProperty('--shadow-color', 'rgba(99, 102, 241, 0.2)');
+          break;
+        case 'rose':
+          root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #f43f5e, #ec4899)');
+          root.style.setProperty('--primary-color', '#f43f5e');
+          root.style.setProperty('--primary-color-rgb', '244, 63, 94');
+          root.style.setProperty('--secondary-color', '#ec4899');
+          root.style.setProperty('--accent-color', '#6366f1');
+          root.style.setProperty('--shadow-color', 'rgba(244, 63, 94, 0.2)');
+          break;
+        case 'emerald':
+          root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #10b981, #059669)');
+          root.style.setProperty('--primary-color', '#10b981');
+          root.style.setProperty('--primary-color-rgb', '16, 185, 129');
+          root.style.setProperty('--secondary-color', '#059669');
+          root.style.setProperty('--accent-color', '#f43f5e');
+          root.style.setProperty('--shadow-color', 'rgba(16, 185, 129, 0.2)');
+          break;
+        case 'amber':
+          root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #f59e0b, #d97706)');
+          root.style.setProperty('--primary-color', '#f59e0b');
+          root.style.setProperty('--primary-color-rgb', '245, 158, 11');
+          root.style.setProperty('--secondary-color', '#d97706');
+          root.style.setProperty('--accent-color', '#6366f1');
+          root.style.setProperty('--shadow-color', 'rgba(245, 158, 11, 0.2)');
+          break;
+        case 'sky':
+          root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #0ea5e9, #0284c7)');
+          root.style.setProperty('--primary-color', '#0ea5e9');
+          root.style.setProperty('--primary-color-rgb', '14, 165, 233');
+          root.style.setProperty('--secondary-color', '#0284c7');
+          root.style.setProperty('--accent-color', '#f43f5e');
+          root.style.setProperty('--shadow-color', 'rgba(14, 165, 233, 0.2)');
+          break;
+        case 'violet':
+          root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #8b5cf6, #7c3aed)');
+          root.style.setProperty('--primary-color', '#8b5cf6');
+          root.style.setProperty('--primary-color-rgb', '139, 92, 246');
+          root.style.setProperty('--secondary-color', '#7c3aed');
+          root.style.setProperty('--accent-color', '#f43f5e');
+          root.style.setProperty('--shadow-color', 'rgba(139, 92, 246, 0.2)');
+          break;
+        case 'slate':
+          root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #475569, #334155)');
+          root.style.setProperty('--primary-color', '#475569');
+          root.style.setProperty('--primary-color-rgb', '71, 85, 105');
+          root.style.setProperty('--secondary-color', '#334155');
+          root.style.setProperty('--accent-color', '#f43f5e');
+          root.style.setProperty('--shadow-color', 'rgba(71, 85, 105, 0.2)');
+          break;
+        case 'dark':
+          document.body.classList.add('dark-theme');
+          root.style.setProperty('--primary-gradient', 'linear-gradient(135deg, #1e293b, #0f172a)');
+          root.style.setProperty('--primary-color', '#1e293b');
+          root.style.setProperty('--primary-color-rgb', '30, 41, 59');
+          root.style.setProperty('--secondary-color', '#0f172a');
+          root.style.setProperty('--accent-color', '#f43f5e');
+          root.style.setProperty('--shadow-color', 'rgba(0, 0, 0, 0.3)');
+          break;
+      }
+      
+      // Update particles color
+      if (window.pJSDom && window.pJSDom[0]) {
+        window.pJSDom[0].pJS.particles.color.value = getComputedStyle(document.documentElement).getPropertyValue('--primary-color');
+        window.pJSDom[0].pJS.particles.line_linked.color = getComputedStyle(document.documentElement).getPropertyValue('--primary-color');
+        window.pJSDom[0].pJS.fn.particlesRefresh();
+      }
+    }
+</script>
 </body>
 </html>
