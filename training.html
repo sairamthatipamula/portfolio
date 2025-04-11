@@ -329,8 +329,8 @@ body.dark-theme .theme-title {
       transform: translateZ(30px) scale(1.2);
     }
     
-    /* Animated page header */
-    .page-header {
+     /* Animated page header */
+     .page-header {
       text-align: center;
       margin: 80px 0 60px;
       position: relative;
@@ -351,6 +351,19 @@ body.dark-theme .theme-title {
       text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
       transform-style: preserve-3d;
       perspective: 1000px;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-10px) rotate(3deg);
+      }
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
     }
     
     .page-title::after {
@@ -379,6 +392,7 @@ body.dark-theme .theme-title {
       gap: 10px;
       opacity: 0.8;
     }
+
     .training-tags {
   margin-top: 15px;
   display: flex;
@@ -399,27 +413,38 @@ body.dark-theme .theme-title {
 .training-tags span:hover {
   background: var(--secondary-color);
 }
+    /* Training timeline responsive styles */
     .training-timeline {
       position: relative;
       max-width: 1000px;
       margin: 0 auto 80px;
       padding: 20px 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
     }
     
     .training-item {
       position: relative;
       margin-bottom: 60px;
-      width: 100%;
+      width: 48%;
       display: flex;
       justify-content: center;
     }
     
-    .training-item:last-child {
+    /* Ensure last row items are aligned properly */
+    .training-item:nth-last-child(-n+2) {
       margin-bottom: 0;
     }
     
+    /* Fix for odd number of items */
+    .training-item:last-child:nth-child(odd) {
+      margin-right: auto;
+      margin-left: 0;
+    }
+    
     .training-content {
-      width: 45%;
+      width: 100%;
       background: var(--card-bg);
       border-radius: var(--border-radius);
       padding: 30px;
@@ -432,6 +457,41 @@ body.dark-theme .theme-title {
       transform: translateY(30px);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.2);
+      overflow: hidden;
+      height: 100%;
+    }
+    
+    /* Add dark bar at the top of training items */
+    .training-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 15px;
+      background: var(--primary-gradient);
+      z-index: 1;
+    }
+    
+    /* Mobile responsive styles */
+    @media (max-width: 768px) {
+      .training-item {
+        width: 100%;
+        margin-bottom: 40px;
+      }
+      
+      .page-title {
+        font-size: 3rem;
+      }
+      
+      .page-subtitle {
+        font-size: 1rem;
+        padding: 0 15px;
+      }
+      
+      .training-title {
+        font-size: 1.5rem;
+      }
     }
     
     .training-content.visible {
@@ -604,7 +664,7 @@ body.dark-theme .theme-title {
             <i class="training-icon fas fa-laptop-code"></i>
             <h3 class="training-title">Programming with Patashala</h3>
             <p class="training-description">
-              Completed specialized training in Python programming, covering core concepts, data structures, and algorithms. Gained hands-on experience in building efficient and scalable Python applications.
+              Completed specialized training in Python programming, covering core concepts, data structures, and algorithms. Gained hands-on experience in building efficient and scalable Python applications
             </p>
             <div class="training-tags">
               <span>Python</span>
@@ -620,7 +680,7 @@ body.dark-theme .theme-title {
             <i class="training-icon fas fa-brain"></i>
             <h3 class="training-title">Coursera - Machine Learning</h3>
             <p class="training-description">
-              Completed a comprehensive course on machine learning, covering supervised and unsupervised learning, neural networks, and deep learning. Applied concepts in real-world projects using Python and TensorFlow.
+              Completed a comprehensive course on machine learning, covering supervised and unsupervised learning, neural networks, and deep learning. Applied concepts in real-world projects using Python and TensorFlow
             </p>
             <div class="training-tags">
               <span>Machine Learning</span>
@@ -636,7 +696,7 @@ body.dark-theme .theme-title {
             <i class="training-icon fas fa-code"></i>
             <h3 class="training-title">Full-Stack Web Development</h3>
             <p class="training-description">
-              Learned frontend and backend development using HTML, CSS, JavaScript, React, and Node.js. Built responsive and dynamic web applications with a focus on user experience and performance optimization.
+              Learned frontend and backend development using HTML, CSS, JavaScript, React, and Node.js. Built responsive and dynamic web applications with a focus on user experience and performance optimization
             </p>
             <div class="training-tags">
               <span>HTML/CSS</span>
@@ -653,7 +713,7 @@ body.dark-theme .theme-title {
             <i class="training-icon fas fa-database"></i>
             <h3 class="training-title">Data Science with Python</h3>
             <p class="training-description">
-              Explored data analysis, visualization, and machine learning using Python libraries like Pandas, NumPy, Matplotlib, and Scikit-learn. Worked on real-world datasets to derive actionable insights.
+              Explored data analysis, visualization, and machine learning using Python libraries like Pandas, NumPy, Matplotlib, and Scikit-learn. Worked on real-world datasets to derive actionable insights
             </p>
             <div class="training-tags">
               <span>Pandas</span>
@@ -663,7 +723,7 @@ body.dark-theme .theme-title {
             </div>
           </div>
         </div>
-
+        
         <!-- Training Item 5 -->
         <div class="training-item" data-aos="fade-up" data-aos-delay="400">
           <div class="training-content">
@@ -680,14 +740,14 @@ body.dark-theme .theme-title {
             </div>
           </div>
         </div>
-        
+
         <!-- Training Item 6 -->
         <div class="training-item" data-aos="fade-up" data-aos-delay="500">
           <div class="training-content">
             <i class="training-icon fas fa-comments"></i>
             <h3 class="training-title">Natural Language Processing</h3>
             <p class="training-description">
-              Studied advanced NLP techniques, including tokenization, sentiment analysis, and sequence-to-sequence models. Built text analysis applications using Python and PyTorch.
+              Studied advanced NLP techniques, including tokenization, sentiment analysis, and sequence-to-sequence models. Built text analysis applications using Python and PyTorch
             </p>
             <div class="training-tags">
               <span>NLP</span>
