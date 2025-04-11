@@ -541,6 +541,95 @@
       border: 7px solid rgb(48, 48, 48);
       transform: scale(1.05);
 }
+    /* Profile photo button and modal */
+    .profile-photo-container {
+      margin-top: 20px;
+    }
+    
+    .profile-photo-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      background: var(--primary-gradient);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 10px 20px var(--shadow-color);
+      transform-style: preserve-3d;
+    }
+    
+    .profile-photo-btn i {
+      margin-right: 10px;
+      font-size: 1.2em;
+      transition: all 0.4s ease;
+    }
+    
+    .profile-photo-btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 30px var(--shadow-color);
+    }
+    
+    .profile-photo-btn:hover i {
+      transform: rotate(10deg);
+    }
+    
+    .profile-photo-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .profile-photo-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+    
+    .profile-photo {
+      max-width: 80%;
+      max-height: 80vh;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+    
+    .profile-photo-modal.active .profile-photo {
+      transform: scale(1);
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    
+    .close-modal:hover {
+      color: var(--accent-color);
+    }
+    
+    /* Make theme title visible in dark theme */
+    body.dark-theme .theme-title {
+      color: #ffffff;
+    }
 
 /* Remove tick mark */
 .theme-btn.active::after {
@@ -733,6 +822,16 @@ body.dark-theme .theme-title {
           <span class="typing-text"></span>
         </p>
         <p class="page-subtitle" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-map-marker-alt"></i> Hyderabad, Telangana</p>
+        <!-- Profile photo button -->
+        <div class="profile-photo-container" data-aos="fade-up" data-aos-delay="350">
+          <button class="profile-photo-btn" id="profilePhotoBtn">
+            <i class="fas fa-user-circle"></i> View Profile Photo
+          </button>
+          <div class="profile-photo-modal" id="profilePhotoModal">
+            <span class="close-modal">&times;</span>
+            <img src="profile.png" alt="Thatipamula Sairam" class="profile-photo">
+          </div>
+        </div>
       </div>
       
       <div class="about-content" data-aos="fade-up" data-aos-delay="400">
@@ -751,6 +850,7 @@ body.dark-theme .theme-title {
         <p>
           Beyond the tech, I believe in being a good communicator, a collaborative team player, and someone who adapts and grows with every challenge. When I'm not coding or building something new, you'll probably find me exploring the cosmos. Yes, I'm a huge space enthusiast!
         </p>
+
       </div>
       
       <div class="download-container" data-aos="zoom-in" data-aos-delay="500">
@@ -927,6 +1027,37 @@ body.dark-theme .theme-title {
       const themeToggle = document.querySelector('.theme-toggle');
       const themePanel = document.querySelector('.theme-panel');
       const themeButtons = document.querySelectorAll('.theme-btn');
+  
+      // Profile photo modal functionality
+      const profilePhotoBtn = document.getElementById('profilePhotoBtn');
+      const profilePhotoModal = document.getElementById('profilePhotoModal');
+      const closeModal = document.querySelector('.close-modal');
+      
+      profilePhotoBtn.addEventListener('click', () => {
+        profilePhotoModal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+      });
+      
+      closeModal.addEventListener('click', () => {
+        profilePhotoModal.classList.remove('active');
+        document.body.style.overflow = ''; // Re-enable scrolling
+      });
+      
+      // Close modal when clicking outside the image
+      profilePhotoModal.addEventListener('click', (e) => {
+        if (e.target === profilePhotoModal) {
+          profilePhotoModal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+      
+      // Close modal with Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && profilePhotoModal.classList.contains('active')) {
+          profilePhotoModal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
   
       themeToggle.addEventListener('click', () => {
         themePanel.classList.toggle('open');
