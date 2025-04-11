@@ -211,48 +211,6 @@
       margin-bottom: 80px;
     }
     
-/* Dark theme specific styles */
-body.dark-theme {
-  --bg-color: #0f172a;
-  --text-color: #e2e8f0;
-  --card-bg: rgba(30, 41, 59, 0.95);
-  --shadow-color: rgba(0, 0, 0, 0.3);
-}
-
-/* Make title visible in dark theme */
-body.dark-theme .page-title {
-  color: #ffffff;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(99, 102, 241, 0.2);
-  -webkit-background-clip: initial;
-  background-clip: initial;
-  background: none;
-}
-
-/* Make theme title visible in dark theme */
-body.dark-theme .theme-title {
-  color: #ffffff;
-}
-    
-    body.dark-theme .skill-name {
-      color: #e2e8f0;
-    }
-    
-    body.dark-theme .page-subtitle {
-      color: #cbd5e1;
-    }
-    
-    body.dark-theme .skill-category h3 {
-      color: #e2e8f0;
-    }
-    
-    body.dark-theme .theme-title {
-      color: #e2e8f0;
-    }
-    
-    body.dark-theme .theme-options {
-      background: rgba(30, 41, 59, 0.95);
-    }
-    
     .skill-category {
       background: var(--card-bg);
       border-radius: var(--border-radius);
@@ -263,6 +221,22 @@ body.dark-theme .theme-title {
       transform-style: preserve-3d;
       position: relative;
       overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeIn 0.8s forwards;
+      animation-delay: calc(var(--delay, 0) * 100ms);
+    }
+    
+    /* Add dark bar at the top of skill categories */
+    .skill-category::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: var(--primary-gradient);
+      z-index: 1;
     }
     
     .skill-category:hover {
@@ -375,11 +349,6 @@ body.dark-theme .theme-title {
     .skill-category:nth-child(2) .skill-tag:nth-child(5) { animation-delay: 0.55s; }
     .skill-category:nth-child(2) .skill-tag:nth-child(6) { animation-delay: 0.65s; }
     
-    .skill-category:hover .icon {
-      transform: scale(1.2) rotate(10deg);
-      opacity: 0.3;
-    }
-    
     .skill-list {
       list-style: none;
       padding: 0;
@@ -456,18 +425,6 @@ body.dark-theme .theme-title {
       transition: width 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
     
-    /* Skill category animations */
-    .skill-category {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-    
-    .skill-category.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
     /* Animations */
     @keyframes fadeIn {
       from {
@@ -486,6 +443,54 @@ body.dark-theme .theme-title {
       }
       50% {
         transform: translateY(-10px) rotate(3deg);
+      }
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+    }
+    
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(3px);
+      }
+    }
+    
+    .float-animation {
+      animation: float 6s ease-in-out infinite;
+      transform-style: preserve-3d;
+    }
+    
+     /* Add floating animations to skill boxes */
+     .skill-category:nth-child(1) {
+      animation: float 6s ease-in-out infinite;
+      animation-delay: 0.2s;
+    }
+    
+    .skill-category:nth-child(2) {
+      animation: float 7s ease-in-out infinite;
+      animation-delay: 0.5s;
+    }
+    
+    .skill-category:nth-child(3) {
+      animation: float 8s ease-in-out infinite;
+      animation-delay: 0.8s;
+    }
+    
+    .skill-category:nth-child(4) {
+      animation: float 9s ease-in-out infinite;
+      animation-delay: 1.1s;
+    }
+    
+    /* Modify float animation to be more subtle */
+    @keyframes float {
+      0% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-5px) rotate(1deg);
       }
       100% {
         transform: translateY(0px) rotate(0deg);
@@ -543,8 +548,8 @@ body.dark-theme .theme-title {
       letter-spacing: 1px;
     }
     
-/* Enhanced theme switcher */
-.theme-panel {
+    /* Enhanced theme switcher */
+    .theme-panel {
       position: fixed;
       top: 20%;
       right: 0;
@@ -659,12 +664,13 @@ body.dark-theme .theme-title {
     .theme-btn.active {
       border: 7px solid rgb(48, 48, 48);
       transform: scale(1.05);
-}
+    }
 
-/* Remove tick mark */
-.theme-btn.active::after {
-  content: none;
-}
+    /* Remove tick mark */
+    .theme-btn.active::after {
+      content: none;
+    }
+    
     /* Theme colors */
     .theme-indigo {
       background: linear-gradient(135deg, #6366f1, #4f46e5);
@@ -698,46 +704,14 @@ body.dark-theme .theme-title {
       background: linear-gradient(135deg, #1e293b, #0f172a);
     }
     
-    /* Animations */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.95);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
+     /* Dark theme specific styles */
+     body.dark-theme {
+      --bg-color: #0f172a;
+      --text-color: #e2e8f0;
+      --card-bg: rgba(30, 41, 59, 0.95);
+      --shadow-color: rgba(0, 0, 0, 0.3);
     }
-    
-    @keyframes float {
-      0% {
-        transform: translateY(0px) rotate(0deg);
-      }
-      50% {
-        transform: translateY(-10px) rotate(3deg);
-      }
-      100% {
-        transform: translateY(0px) rotate(0deg);
-      }
-    }
-    
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateX(0);
-      }
-      50% {
-        transform: translateX(3px);
-      }
-    }
-    
-    .float-animation {
-      animation: float 6s ease-in-out infinite;
-      transform-style: preserve-3d;
-    }
-    
 
-    
     /* Make title visible in dark theme */
     body.dark-theme .page-title {
       color: #ffffff;
@@ -747,14 +721,38 @@ body.dark-theme .theme-title {
       background: none;
     }
     
+    body.dark-theme .skill-name {
+      color: #e2e8f0;
+    }
+    
+    body.dark-theme .page-subtitle {
+      color: #cbd5e1;
+    }
+    
+    body.dark-theme .skill-category h3 {
+      color: #e2e8f0;
+    }
+    
+    body.dark-theme .theme-title {
+      color: #e2e8f0;
+    }
+    
+    body.dark-theme .theme-options {
+      background: rgba(30, 41, 59, 0.95);
+    }
+    
     /* Responsive styles */
     @media (max-width: 768px) {
       .page-title {
         font-size: 3rem;
       }
       
-      .projects-grid {
+      .skills-container {
         grid-template-columns: 1fr;
+      }
+      
+      .skill-category {
+        margin-bottom: 20px;
       }
       
       .main-nav ul li a {
