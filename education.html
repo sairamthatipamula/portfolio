@@ -467,6 +467,31 @@
       opacity: 0.3;
     }
     
+    /* Certificate button styling */
+    .certificate-btn {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: var(--primary-gradient);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px var(--shadow-color);
+    }
+    
+    .certificate-btn i {
+      margin-right: 8px;
+    }
+    
+    .certificate-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px var(--shadow-color);
+    }
+    
     /* Modern footer styles */
     footer {
       background: var(--primary-gradient);
@@ -892,6 +917,9 @@ body.dark-theme .theme-title {
           <div class="marks-bar">
             <div class="marks-bar-fill" style="width: 66%;">CGPA: 6.6 (Ongoing)</div>
           </div>
+          <a href="btech.pdf" class="certificate-btn" target="_blank">
+            <i class="fas fa-external-link-alt"></i> View Performance
+          </a>
         </div>
       </div>
       
@@ -909,6 +937,9 @@ body.dark-theme .theme-title {
           <div class="marks-bar">
             <div class="marks-bar-fill" style="width: 72%;">Percentage: 72%</div>
           </div>
+          <a href="12th.pdf" class="certificate-btn" target="_blank">
+            <i class="fas fa-external-link-alt"></i> View Certificate
+          </a>
         </div>
       </div>
       
@@ -926,7 +957,11 @@ body.dark-theme .theme-title {
           <div class="marks-bar">
             <div class="marks-bar-fill" style="width: 93%;">CGPA: 9.3</div>
           </div>
+          <a href="10th.pdf" class="certificate-btn" target="_blank">
+            <i class="fas fa-external-link-alt"></i> View Certificate
+          </a>
         </div>
+      </div>
       </div>
     </div>
   </div>
