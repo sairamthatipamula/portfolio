@@ -838,6 +838,70 @@
       }
     }
     
+    @keyframes celebrate {
+      0% { transform: scale(1); color: var(--primary-color); }
+      25% { transform: scale(1.2) rotate(5deg); color: #FFD700; /* Gold */ }
+      50% { transform: scale(1) rotate(0deg); color: var(--primary-color); }
+      75% { transform: scale(1.2) rotate(-5deg); color: #FFD700; /* Gold */ }
+      100% { transform: scale(1); color: var(--primary-color); }
+    }
+    
+    @keyframes confetti {
+      0% { transform: scale(1); text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+      25% { transform: scale(1.1) rotate(3deg); text-shadow: 0 0 10px rgba(255, 105, 180, 0.7), -5px -5px 15px rgba(64, 224, 208, 0.5), 5px 5px 15px rgba(255, 215, 0, 0.6); }
+      50% { transform: scale(1.05) rotate(-2deg); text-shadow: 0 0 15px rgba(50, 205, 50, 0.7), 5px -5px 15px rgba(255, 165, 0, 0.6), -5px 5px 15px rgba(147, 112, 219, 0.5); }
+      75% { transform: scale(1.1) rotate(2deg); text-shadow: 0 0 10px rgba(30, 144, 255, 0.7), 5px 5px 15px rgba(255, 105, 180, 0.6), -5px -5px 15px rgba(255, 215, 0, 0.5); }
+      100% { transform: scale(1); text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+    }
+    
+    .graduate-celebrate {
+      display: inline-block;
+      animation: confetti 3s ease-in-out infinite;
+      font-weight: bold;
+      background: linear-gradient(90deg, #FFD700, #FF6347, #9370DB, #4169E1, #3CB371, #FFD700);
+      background-size: 400% 400%;
+      animation: confetti 3s ease-in-out infinite, gradientShift 6s linear infinite;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      padding: 2px 8px;
+      border-radius: 4px;
+      position: relative;
+    }
+    
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Add sparkle effect */
+    .graduate-celebrate::before,
+    .graduate-celebrate::after {
+      content: "✨";
+      position: absolute;
+      font-size: 0.8em;
+      opacity: 0;
+      animation: sparkle 3s ease-in-out infinite;
+    }
+    
+    .graduate-celebrate::before {
+      left: -15px;
+      top: -5px;
+      animation-delay: 0.5s;
+    }
+    
+    .graduate-celebrate::after {
+      right: -15px;
+      top: -5px;
+      animation-delay: 1.5s;
+    }
+    
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: translateY(0) scale(0.5); }
+      50% { opacity: 1; transform: translateY(-10px) scale(1); }
+    }
+    
     .float-animation {
       animation: float 6s ease-in-out infinite;
       transform-style: preserve-3d;
@@ -997,7 +1061,7 @@ body.dark-theme .theme-title {
           <i class="education-icon fas fa-university"></i>
           <div class="education-date">2021 - 2025</div>
           <h3 class="education-title">Lovely Professional University -Punjab</h3>
-                    <div class="education-school"> GRADUATED 🎓 </div>
+          <div class="education-school"><span class="graduate-celebrate">GRADUATED 🎓</span></div>
           <div class="education-school">B-Tech / Computer Science and Engineering</div>
           <p class="education-description">
             Pursuing B-Tech in Computer Science and Engineering from Jalandhar, Punjab.
