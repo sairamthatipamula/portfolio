@@ -492,6 +492,101 @@
       box-shadow: 0 8px 20px var(--shadow-color);
     }
     
+    /* Semester table styling */
+    .semester-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 15px;
+      padding: 12px 25px;  /* Increased padding */
+      background: var(--primary-gradient);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;  /* Increased font size */
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px var(--shadow-color);
+      cursor: pointer;
+      min-width: 220px;  /* Set minimum width */
+      justify-content: center;  /* Center the text and icon */
+    }
+    
+    .semester-toggle-btn i {
+      margin-right: 10px;  /* Increased icon spacing */
+      font-size: 1.1rem;  /* Increased icon size */
+    }
+    
+    .semester-toggle-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px var(--shadow-color);
+    }
+    
+    .semester-table-container {
+      margin-top: 20px;
+      overflow: hidden;
+      border-radius: var(--border-radius);
+      box-shadow: 0 5px 15px var(--shadow-color);
+      transition: all 0.3s ease;
+    }
+    
+    .semester-table-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--primary-color);
+      text-align: center;
+    }
+    
+    .semester-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card-bg);
+      overflow: hidden;
+      font-size: 0.9rem;
+    }
+    
+    .semester-table th,
+    .semester-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .semester-table th {
+      background: var(--primary-gradient);
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+    }
+    
+    .semester-table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .semester-table tr:nth-child(even) {
+      background-color: rgba(0, 0, 0, 0.02);
+    }
+    
+    .semester-table tr:hover {
+      background-color: rgba(var(--primary-color-rgb), 0.05);
+    }
+    
+    /* Dark theme adjustments */
+    body.dark-theme .semester-table td {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    body.dark-theme .semester-table tr:nth-child(even) {
+      background-color: rgba(255, 255, 255, 0.02);
+    }
+    
+    body.dark-theme .semester-table tr:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    
     /* Modern footer styles */
     footer {
       background: var(--primary-gradient);
@@ -676,14 +771,7 @@
   text-align: center;
   transition: width 0.3s ease, background 0.3s ease;
 }
-.marks-bar-fill {
-  background: var(--accent-color);
-  color: white;
-  padding: 10px;
-  font-weight: 600;
-  text-align: center;
-  transition: width 0.3s ease;
-}
+
     /* Theme colors */
     .theme-indigo {
       background: linear-gradient(135deg, #6366f1, #4f46e5);
@@ -909,17 +997,76 @@ body.dark-theme .theme-title {
           <i class="education-icon fas fa-university"></i>
           <div class="education-date">2021 - 2025</div>
           <h3 class="education-title">Lovely Professional University -Punjab</h3>
+                    <div class="education-school"> GRADUATED 🎓 </div>
           <div class="education-school">B-Tech / Computer Science and Engineering</div>
           <p class="education-description">
             Pursuing B-Tech in Computer Science and Engineering from Jalandhar, Punjab.
           </p>
           <!-- Marks bar -->
           <div class="marks-bar">
-            <div class="marks-bar-fill" style="width: 66%;">CGPA: 6.6 (Ongoing)</div>
+            <div class="marks-bar-fill" style="width: 67%;">CGPA: 6.73</div>
           </div>
-          <a href="btech.pdf" class="certificate-btn" target="_blank">
-            <i class="fas fa-external-link-alt"></i> View Performance
-          </a>
+          
+          <!-- Toggle button for semester table -->
+          <button class="semester-toggle-btn">
+            <i class="fas fa-table"></i> View Semester-wise Performance
+          </button>
+          
+          <!-- Semester Percentages Table (initially hidden) -->
+          <div class="semester-table-container" style="display: none;">
+            <h4 class="semester-table-title">Semester Performance</h4>
+            <table class="semester-table">
+              <thead>
+                <tr>
+                  <th>Semester</th>
+                  <th>Percentage</th>
+                  <th>TGPA</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Semester 1</td>
+                  <td>68.70%</td>
+                  <td>6.87</td>
+                </tr>
+                <tr>
+                  <td>Semester 2</td>
+                  <td>70.80%</td>
+                  <td>7.08</td>
+                </tr>
+                <tr>
+                  <td>Semester 3</td>
+                  <td>67.00%</td>
+                  <td>6.70</td>
+                </tr>
+                <tr>
+                  <td>Semester 4</td>
+                  <td>58.40%</td>
+                  <td>5.84</td>
+                </tr>
+                <tr>
+                  <td>Semester 5</td>
+                  <td>68.30%</td>
+                  <td>6.83</td>
+                </tr>
+                <tr>
+                  <td>Semester 6</td>
+                  <td>65.60%</td>
+                  <td>6.56</td>
+                </tr>
+                <tr>
+                  <td>Semester 7</td>
+                  <td>58.00%</td>
+                  <td>5.80</td>
+                </tr>
+                <tr>
+                  <td>Semester 8</td>
+                  <td>84.00%</td>
+                  <td>8.38</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       
@@ -984,8 +1131,8 @@ body.dark-theme .theme-title {
     AOS.init({
       duration: 1000,
       easing: 'ease-out-cubic',
-      once: false,
-      mirror: true,
+      once: true,
+      mirror: false,
       anchorPlacement: 'top-bottom'
     });
     
@@ -1142,6 +1289,46 @@ body.dark-theme .theme-title {
         }, 500);
       });
     });
+    
+    // Semester table toggle functionality
+    const semesterToggleBtn = document.querySelector('.semester-toggle-btn');
+    const semesterTableContainer = document.querySelector('.semester-table-container');
+    
+    if (semesterToggleBtn && semesterTableContainer) {
+      semesterToggleBtn.addEventListener('click', function() {
+        // Toggle visibility
+        const isHidden = semesterTableContainer.style.display === 'none';
+        
+        // Animate the container
+        if (isHidden) {
+          semesterTableContainer.style.display = 'block';
+          semesterTableContainer.style.opacity = '0';
+          semesterTableContainer.style.transform = 'translateY(-10px)';
+          
+          // Force reflow
+          semesterTableContainer.offsetHeight;
+          
+          // Animate in
+          semesterTableContainer.style.opacity = '1';
+          semesterTableContainer.style.transform = 'translateY(0)';
+          
+          // Update button text
+          this.innerHTML = '<i class="fas fa-table"></i> Hide Semester Performance';
+        } else {
+          // Animate out
+          semesterTableContainer.style.opacity = '0';
+          semesterTableContainer.style.transform = 'translateY(-10px)';
+          
+          // Hide after animation
+          setTimeout(() => {
+            semesterTableContainer.style.display = 'none';
+          }, 300);
+          
+          // Update button text
+          this.innerHTML = '<i class="fas fa-table"></i> View Semester Performance';
+        }
+      });
+    }
     
     // Theme switcher functionality
     const root = document.documentElement;
