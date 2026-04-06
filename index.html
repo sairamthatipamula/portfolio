@@ -753,6 +753,89 @@ body.dark-theme .theme-title {
   color: #ffffff;
 }
     
+    /* ===== JOB ANNOUNCEMENT POPUP ===== */
+    .job-popup-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.45);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: jOverlayIn 0.3s ease forwards;
+    }
+    @keyframes jOverlayIn { from { opacity:0; } to { opacity:1; } }
+    .job-popup-overlay.closing { animation: jOverlayOut 0.25s ease forwards; }
+    @keyframes jOverlayOut { from { opacity:1; } to { opacity:0; } }
+    .job-popup {
+      background: var(--card-bg);
+      border-radius: 18px;
+      width: 88%;
+      max-width: 320px;
+      overflow: hidden;
+      animation: jPopIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    @keyframes jPopIn {
+      from { transform: scale(0.85) translateY(16px); opacity:0; }
+      to   { transform: scale(1) translateY(0); opacity:1; }
+    }
+    .job-popup.closing { animation: jPopOut 0.25s ease forwards; }
+    @keyframes jPopOut {
+      from { transform: scale(1); opacity:1; }
+      to   { transform: scale(0.9); opacity:0; }
+    }
+    .jp-top {
+      background: var(--primary-gradient);
+      padding: 20px 20px 16px;
+      text-align: center;
+    }
+    .jp-icon {
+      width: 38px; height: 38px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 8px;
+      font-size: 16px;
+    }
+    .jp-title {
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      margin: 0 0 3px;
+    }
+    .jp-sub {
+      color: rgba(255,255,255,0.72);
+      font-size: 0.76rem;
+    }
+    .jp-body { padding: 16px 18px 18px; }
+    .jp-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      font-size: 0.85rem;
+    }
+    .jp-row:last-of-type { border-bottom: none; }
+    .jp-label { opacity: 0.45; font-size: 0.75rem; }
+    .jp-val { font-weight: 600; color: var(--primary-color); }
+    .jp-btn {
+      margin-top: 14px;
+      width: 100%;
+      padding: 10px;
+      background: var(--primary-gradient);
+      color: #fff;
+      border: none;
+      border-radius: 9px;
+      font-size: 0.87rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: opacity 0.2s ease;
+    }
+    .jp-btn:hover { opacity: 0.85; }
     /* Responsive styles */
     @media (max-width: 768px) {
       .page-title {
@@ -775,6 +858,32 @@ body.dark-theme .theme-title {
   </style>
 </head>
 <body>
+  <!-- ===== JOB ANNOUNCEMENT POPUP ===== -->
+  <div class="job-popup-overlay" id="jobPopupOverlay">
+    <div class="job-popup" id="jobPopup">
+      <div class="jp-top">
+        <p class="jp-title">Placed at Accenture!</p>
+        <p class="jp-sub">Stepping Into a New Chapter</p>
+      </div>
+      <div class="jp-body">
+        <div class="jp-row">
+          <span class="jp-label">Company</span>
+          <span class="jp-val">Accenture</span>
+        </div>
+        <div class="jp-row">
+          <span class="jp-label">Role</span>
+          <span class="jp-val">Java Developer</span>
+          <span class="jp-val">(Clinical Data Svs Associate)</span>
+        </div>
+        <div class="jp-row">
+          <span class="jp-label">Type</span>
+          <span class="jp-val">Full-Time</span>
+        </div>
+        <button class="jp-btn" id="closeJobPopup">Let's Go</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Particle background -->
   <div id="particles-js" class="particles-js"></div>
 
@@ -874,6 +983,21 @@ Outside of tech, I’m a strong communicator, team player, and an unapologetic s
   </footer>
 
   <!-- Scripts -->
+  <script>
+    (function() {
+      const overlay = document.getElementById('jobPopupOverlay');
+      const popup = document.getElementById('jobPopup');
+      const closeBtn = document.getElementById('closeJobPopup');
+      function closePopup() {
+        overlay.classList.add('closing');
+        popup.classList.add('closing');
+        setTimeout(() => overlay.style.display = 'none', 260);
+      }
+      closeBtn.addEventListener('click', closePopup);
+      overlay.addEventListener('click', function(e) { if (e.target === overlay) closePopup(); });
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePopup(); });
+    })();
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
